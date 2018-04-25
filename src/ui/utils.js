@@ -1,0 +1,20 @@
+import React from 'react';
+import classNames from 'classnames';
+
+
+export const withClassNames = function () {
+  const args = Array.prototype.slice.call(arguments);
+  return WrappedComponent => {
+    const WithClassNames = props => {
+      const className = classNames.apply(classNames, args.concat([props.className]));
+      if (typeof WrappedComponent === 'string') {
+        return React.createElement(WrappedComponent, {...props, className, });
+      } else {
+        return <WrappedComponent {...props} className={className} />
+      }
+    }
+
+    //WithClassNamesComponent.displayName = `WithClassNamesComponent(${getDisplayName(WrappedComponent)})`;
+    return WithClassNames;
+  }
+}
