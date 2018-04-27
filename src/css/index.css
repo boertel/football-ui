@@ -22,9 +22,16 @@ h5 {
   margin: 0;
   padding: 0;
 }
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 .content {
-  max-width: 600px;
-  margin: 40px auto;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
 }
 .button {
   margin: 0;
@@ -435,11 +442,41 @@ a.button {
 .score-input input[disabled] {
   background-color: #ccc;
 }
-.bet-section {
+.bets {
+  margin-top: 8px;
+  border-top: 1px solid #808080;
+  padding-top: 8px;
+}
+.bet-sections {
   display: flex;
   justify-content: space-between;
+  margin-top: 16px;
+}
+.bet-section {
+  flex-grow: 1;
+  padding-right: 16px;
 }
 .bet-section h4 {
   margin-bottom: 12px;
   text-align: center;
+}
+.bet-section:first-child h4 {
+  text-align: left;
+}
+.bet-section:last-child {
+  padding-right: 0;
+}
+.bet-section:last-child h4 {
+  text-align: right;
+}
+.bet-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.task {
+  padding: 16px;
+  margin: 16px;
+  background-color: #fff;
 }

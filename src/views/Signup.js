@@ -20,7 +20,7 @@ const SignupForm = ({ values, handleSubmit, isSubmitting }) => (
   <form onSubmit={handleSubmit}>
     <FormSection>
       <FormGroup label="Full name">
-        <Field name="first_name" component={TextField} />
+        <Field name="full_name" component={TextField} />
       </FormGroup>
       <FormGroup label="Email Address">
         <Field name="username" component={TextField} />

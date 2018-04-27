@@ -2,7 +2,7 @@ import api from '../api';
 
 
 const LOAD = 'football/auth/LOAD';
-const AUTHENTICATED = 'football/aut/AUTHENTICATED';
+const AUTHENTICATED = 'football/auth/AUTHENTICATED';
 const LOGOUT = 'football/auth/LOGOUT';
 
 
@@ -51,16 +51,6 @@ export function logout() {
   }
 }
 
-export function loadUser() {
-  return dispatch => {
-    return api.get('/users/me/').then(response => {
-      dispatch({
-        type: LOAD,
-        payload: response.data,
-      });
-    });
-  }
-}
 
 const initialState = {
 }
@@ -68,12 +58,6 @@ const initialState = {
 export default function reducer(state=initialState, action) {
   switch(action.type) {
     case AUTHENTICATED:
-      return {
-        ...state,
-        ...action.payload,
-      }
-
-    case LOAD:
       return {
         ...state,
         ...action.payload,

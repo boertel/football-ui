@@ -25,7 +25,11 @@ export const proxy = (obj, state) => {
     get: (target, key) => {
       const value = target[key];
       if (value !== null && typeof value === 'object') {
-        return proxy(get(state, [value._type, value.id]), state);
+        const child = get(state, [value._type, value.id]);
+        if (child) {
+          return proxy(child, state);
+        }
+        return {}
       }
       return value;
     }

@@ -22,6 +22,7 @@ const proxify = createProxify({
   'competitor_a': 'competitor',
   'competitor_b': 'competitor',
   'group': 'group',
+  'bet': 'bet',
 });
 
 export default function (state=initialState, action) {

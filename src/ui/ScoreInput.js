@@ -87,7 +87,7 @@ class ScoreInput extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const userId = state.user.id;
+  const userId = state.auth.id;
   const { gameId } = ownProps;
 
   const bet = values(state.bet).find(bet => bet.user.id === userId && bet.game.id === gameId) || {};

@@ -39,11 +39,4 @@ const Games = props => {
 
 const mapStateToProps = state => ({ games: state.games, refresh: Object.keys(state.games).length === 0 })
 
-const mapDispatchToProps = dispatch => ({
-  load: (props) => {
-    const promises = [loadGames, loadMyBets].map(action => dispatch(action(props)))
-    return Promise.all(promises);
-  }
-})
-
-export default asyncConnect(mapStateToProps, mapDispatchToProps)(Games);
+export default asyncConnect(mapStateToProps, { load: loadGames })(Games);

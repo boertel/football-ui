@@ -2,6 +2,8 @@ import api from '../api';
 import { createProxify } from './utils';
 import { mapValues, keyBy } from 'lodash';
 
+import { LOAD as GAME_LOAD } from './games';
+
 
 export const CREATE_OR_UPDATE = 'football/bet/CREATE_OR_UPDATE';
 export const LOAD = 'football/bet/LOAD';
@@ -37,7 +39,7 @@ export const loadMyBets = () => {
 const initialState = {};
 
 const proxify = createProxify({
-  game: 'games',
+  //game: 'games',
   user: 'user',
 });
 
@@ -47,6 +49,21 @@ export default function (state=initialState, action) {
       return {
         ...state,
         ...mapValues(action.payload, proxify),
+      }
+
+    case GAME_LOAD:
+      let bets = {};
+      mapValues(action.payload, ({ bet }) => {
+        if (bet !== null) {
+          bets[bet.id] = {
+            ...state[bet.id],
+            ...bet,
+          }
+        }
+      })
+      return {
+        ...state,
+        ...mapValues(bets, proxify),
       }
 
     case CREATE_OR_UPDATE:

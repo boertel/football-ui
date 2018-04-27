@@ -5,6 +5,7 @@ import games from './games';
 import competitor from './competitor';
 import group from './group';
 import points from './points';
+import user from './user';
 import bet from './bet';
 
 
@@ -15,4 +16,5 @@ export default combineReducers({
   group,
   points,
   bet,
+  user,
 });

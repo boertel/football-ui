@@ -54,6 +54,21 @@ export const withAsync = (async, options) => {
 }
 
 export const asyncConnect = (mapStateToProps, mapDispatchToProps, options) => {
+  if (typeof mapDispatchToProps === 'object' && mapDispatchToProps !== null) {
+    if (Array.isArray(mapDispatchToProps.load)) {
+      const loads = mapDispatchToProps.load;
+
+      mapDispatchToProps = dispatch => {
+        const load = (props) => {
+          const promises = loads.map(action => dispatch(action(props)))
+          return Promise.all(promises);
+        };
+        return {
+          load,
+        }
+      };
+    }
+  }
   return (WrappedComponent) => {
     return compose(
       connect(mapStateToProps, mapDispatchToProps),
