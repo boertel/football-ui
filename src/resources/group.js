@@ -1,6 +1,7 @@
 import api from '../api';
 import { keyBy, mapValues } from 'lodash';
 import { LOAD as GAMES_LOAD } from './games';
+import { createProxify } from './utils';
 
 
 export const LOAD = 'football/group/LOAD';
@@ -18,6 +19,10 @@ export const loadGroups = () => {
 
 
 const initialState = {};
+
+const proxify = createProxify({
+  points: 'points',
+});
 
 export default function (state=initialState, action) {
   switch(action.type) {
@@ -37,7 +42,7 @@ export default function (state=initialState, action) {
       });
       return {
         ...state,
-        ...groups,
+        ...mapValues(groups, proxify),
       }
 
     default:

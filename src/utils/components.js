@@ -6,13 +6,20 @@ import { connect, } from 'react-redux';
 export const withAsync = (async, options) => {
   return (WrappedComponent) => {
     return class WithAsyncComponent extends Component {
-      state = {
-        loading: true,
+      constructor(props) {
+        super(props);
+        this.state = {
+          loading: !!props.load,
+        }
       }
 
       done = () => this.setState({ loading: false });
 
       load = (props, refresh) => {
+        if (!props.load) {
+          return;
+        }
+
         if (props.refresh === false) {
           this.done();
           return;
@@ -27,6 +34,7 @@ export const withAsync = (async, options) => {
       }
 
       componentWillReceiveProps(nextProps) {
+        // TODO when should I re-load the data? refresh changed?
         //this.load(nextProps);
       }
 
@@ -36,7 +44,7 @@ export const withAsync = (async, options) => {
         } = this.state;
 
         if (loading) {
-          return <div>Loading...</div>
+          return <div>Loading...{this.constructor.displayName}</div>
         }
 
         return <WrappedComponent {...this.props} />

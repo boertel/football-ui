@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { asyncConnect } from '../utils/components';
-import { loadUser } from '../resources/user';
+import { loadUser } from '../resources/auth';
 
 
 const Dashboard = ({ first_name }) => (
@@ -13,8 +13,8 @@ const Dashboard = ({ first_name }) => (
 )
 
 const mapStateToProps = state => ({
-  refresh: !state.user.id,
-  first_name: state.user.first_name,
+  refresh: !state.auth.id,
+  first_name: state.auth.first_name,
 })
 
 export default asyncConnect(mapStateToProps, { load: loadUser })(Dashboard)

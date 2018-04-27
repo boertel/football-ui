@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { logout } from '../resources/user';
+import { logout } from '../resources/auth';
 
 const Header = (props) => {
   return (

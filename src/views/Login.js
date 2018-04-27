@@ -13,7 +13,7 @@ import {
   TextField,
 } from '../fields';
 
-import { login } from '../resources/user';
+import { login } from '../resources/auth';
 
 const LoginForm = ({ values, handleSubmit, isSubmitting }) => (
   <form onSubmit={handleSubmit}>

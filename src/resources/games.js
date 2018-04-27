@@ -1,5 +1,6 @@
-import keyBy from 'lodash/keyBy';
+import { keyBy, mapValues, } from 'lodash';
 import api from '../api'
+import { createProxify } from './utils';
 
 export const LOAD = 'football/games/LOAD';
 
@@ -16,12 +17,19 @@ export const loadGames = () => {
 
 const initialState = {};
 
+
+const proxify = createProxify({
+  'competitor_a': 'competitor',
+  'competitor_b': 'competitor',
+  'group': 'group',
+});
+
 export default function (state=initialState, action) {
   switch (action.type) {
     case LOAD:
       return {
         ...state,
-        ...action.payload,
+        ...mapValues(action.payload, proxify),
       }
 
     default:

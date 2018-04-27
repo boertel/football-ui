@@ -1,22 +1,17 @@
-import keyBy from 'lodash/keyBy';
-import values from 'lodash/values';
-
 import api from '../api';
 
 
-const LOAD = 'football/user/LOAD';
-const AUTHENTICATED = 'football/user/AUTHENTICATED';
-const LOGOUT = 'football/user/LOGOUT';
+const LOAD = 'football/auth/LOAD';
+const AUTHENTICATED = 'football/aut/AUTHENTICATED';
+const LOGOUT = 'football/auth/LOGOUT';
+
 
 export function checkAuthentication() {
   return dispatch => {
     return api.get('/auth').then(response => {
-      const { authenticated } = response.data;
       dispatch({
         type: AUTHENTICATED,
-        payload: {
-          authenticated: response.data.authenticated,
-        }
+        payload: response.data,
       });
     });
   }

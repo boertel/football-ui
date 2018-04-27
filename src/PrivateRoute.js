@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 const withPrivateComponent = (WrappedComponent) => {
 
-  const mapStateToProps = state => ({ authenticated: state.user.authenticated, });
+  const mapStateToProps = state => ({ authenticated: state.auth.authenticated, });
 
   class PrivateComponent extends Component {
     render() {

@@ -1,7 +1,6 @@
-import React from 'react';
 import { asyncConnect } from '../utils/components';
 
-import { checkAuthentication } from '../resources/user';
+import { checkAuthentication } from '../resources/auth';
 
 
 const Auth = (props) => {
