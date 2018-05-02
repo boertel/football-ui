@@ -3,11 +3,12 @@ import React from 'react';
 const Flag = ({ size, viewBox, cut, children, ...rest }) => {
   let defs = null;
   let clipPath = null;
+  const hypotenuse = parseInt((size ** 2 + size ** 2), 10);
   if (cut === 'bottom') {
     defs = (
       <defs>
         <clipPath id={cut}>
-          <rect x="0" y="0" width="68" height="34" transform="translate(-23, 15) rotate(-35)" />
+          <rect x="0" y="0" width={hypotenuse} height={hypotenuse} transform={`translate(-${size}, 0) rotate(-45)`} />
         </clipPath>
       </defs>
     );
@@ -17,7 +18,7 @@ const Flag = ({ size, viewBox, cut, children, ...rest }) => {
     defs = (
       <defs>
         <clipPath id={cut}>
-          <rect x="0" y="0" width="68" height="34" transform="translate(0, 40) rotate(-35)" />
+          <rect x="0" y="0" width={hypotenuse} height={hypotenuse} transform={`translate(0, ${size}) rotate(-45)`} />
         </clipPath>
       </defs>
     )
