@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Task = ({ message }) => {
+const Task = ({ message, icon, }) => {
   return (
-    <div className="task">{message}</div>
+    <div className="task">
+      <div className="icon">{icon}</div>
+      <div className="message">{message}</div>
+    </div>
   );
 }
 

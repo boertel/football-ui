@@ -78,6 +78,7 @@ class ScoreInput extends Component {
           {...rest}
           onBlur={this.onBlur}
           value={this.state.value}
+          autoComplete="off"
         />
         {saving && 'saving...'}
         {saved && 'saved'}

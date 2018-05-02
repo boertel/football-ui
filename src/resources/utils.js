@@ -20,14 +20,18 @@ export const createProxify = (mapping) => {
 };
 
 
-export const proxy = (obj, state) => {
+export const proxy = (obj, state, exclude=[]) => {
   const handler = {
     get: (target, key) => {
       const value = target[key];
       if (value !== null && typeof value === 'object') {
         const child = get(state, [value._type, value.id]);
         if (child) {
-          return proxy(child, state);
+          if (exclude.indexOf(key) === -1) {
+            return proxy(child, state);
+          } else {
+            return child;
+          }
         }
         return {}
       }

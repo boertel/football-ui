@@ -4,6 +4,10 @@ import values from 'lodash/values';
 
 import { asyncConnect } from '../utils/components';
 import { loadBets } from '../resources/bet';
+import { loadGames } from '../resources/games';
+import { proxy } from '../resources/utils';
+
+import Game from './Game';
 
 
 const competitorAwins = ({ score_a, score_b }) => score_a > score_b;
@@ -26,37 +30,41 @@ const BetSection = ({ title, bets, filter }) => (
   </div>
 )
 
-const Bets = ({ locked, competitor_a, competitor_b, bets }) => {
+const Bets = ({ gameId, locked, competitor_a, competitor_b, bets }) => {
+  let content = null;
   if (!locked) {
-    return <em>All predictions will be available to see 15 minutes before kick-off time.</em>
-  }
-
-  return (
-    <div className="bets">
-      <h3>Predictions</h3>
+    content = <em>All predictions will be available to see 15 minutes before kick-off time.</em>;
+  } else {
+    content = (
       <div className="bet-sections">
         <BetSection title={`${competitor_a.name} wins`} bets={bets} filter={competitorAwins} />
         <BetSection title="It's a tie!" bets={bets} filter={itIsATie} />
         <BetSection title={`${competitor_b.name} wins`} bets={bets} filter={competitorBwins} />
       </div>
+    );
+  }
+
+  return (
+    <div className="bets">
+      <h3>Predictions</h3>
+      {content}
     </div>
   );
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { gameId } = ownProps;
+  const gameId = ownProps.gameId;
 
   const bets = values(state.bet).filter(bet => bet.game.id === gameId);
+  const game = proxy(state.games[gameId], state);
 
   return {
+    gameId,
+    ...game,
     bets,
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    load: () => dispatch(loadBets({ game: ownProps.gameId })),
-  };
-}
 
-export default asyncConnect(mapStateToProps, mapDispatchToProps)(Bets);
+// TODO conditional load? is game already in redux?
+export default asyncConnect(mapStateToProps, { load: [(props) => loadBets({ game: props.gameId })]})(Bets);

@@ -1,0 +1,17 @@
+.badge
+    display: inline-flex
+    padding: pad(1) pad(2)
+    background-color: $grey-light
+    border-radius: $border-radius * 2
+    font-size: 80%
+    font-weight: 700
+
+    &.hidden
+        visibility: hidden
+
+    + .badge
+        margin-right: pad(4)
+
+    &.live
+        background-color: $danger
+        color: #fff

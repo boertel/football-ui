@@ -1,16 +1,31 @@
 import React from 'react';
+import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import { Link } from 'react-router-dom';
 
 import { withClassNames } from './utils';
-import Time from './Time';
-import BetForm from './BetForm';
 import Bets from '../views/Bets';
 import PrivateRoute from '../PrivateRoute';
-import CompetitorFlag from './CompetitorFlag';
+import GameMetadata from './GameMetadata';
+import GameScore from './GameScore';
+
+
+const getStatus = (score_a, score_b, bet) => {
+  if (score_a !== null && score_b !== null) {
+    if (score_a === bet.score_a && score_b === bet.score_b) {
+      return 'perfect';
+    }
+    if (score_a >= bet.score_a && score_b >= bet.score_b) {
+      return 'win';
+    }
+    return 'loss';
+  }
+  return 'unknow';
+}
 
 
 class GameCard extends React.Component {
+  // TODO create ProxyComponent that handle scu
   shouldComponentUpdate(nextProps, nextState) {
     let equality = false
     for (let key in nextProps) {
@@ -26,32 +41,40 @@ class GameCard extends React.Component {
   }
 
   render() {
-    const { id, className, start, competitor_a, competitor_b, group, locked, } = this.props;
-    const to = `/games/${id}`
-    console.log('render', to);
-    // TODO wrap this in a Link or onClick
+    const {
+      id,
+      start,
+      competitor_a,
+      competitor_b,
+      score_a,
+      score_b,
+      bet,
+      group,
+      locked,
+    } = this.props;
+
+    const className = classNames(this.props.className, getStatus(score_a, score_b, bet))
+
     return (
       <div className={className}>
-        <Link to={to}>
-          <div className="game-card">
-            <Time time={start} format="HH:mm a" />
-            <div>
-              <div className="competitor">
-                <CompetitorFlag name={competitor_a.name} />
-                <div>{competitor_a.name}</div>
-              </div>
-              <div className="competitor">
-                <CompetitorFlag name={competitor_b.name} />
-                <div>{competitor_b.name}</div>
-              </div>
-            </div>
-            <BetForm gameId={id} disabled={locked} />
+        <GameMetadata group={group} start={start} />
+        <div className="game-content">
+          <GameScore name="score_a" competitor_name={competitor_a.name} id={id} locked={locked} />
+          <GameScore name="score_b" competitor_name={competitor_b.name} id={id} locked={locked} />
+        </div>
+        {locked ? (
+        <div className="game-my-bet">
+          <h4>Your predictions</h4>
+          <div>
+            <div>{bet.score_a}</div>
+            <div>{bet.score_b}</div>
           </div>
-        </Link>
-        <PrivateRoute path={to} component={(props) => <Bets {...this.props} gameId={id} />} />
+          <div />
+        </div>)
+        : null }
       </div>
     );
   }
 }
 
-export default withClassNames('game')(GameCard);
+export default withClassNames('game-card')(GameCard);

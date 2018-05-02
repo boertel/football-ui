@@ -39,7 +39,7 @@ export const loadMyBets = () => {
 const initialState = {};
 
 const proxify = createProxify({
-  //game: 'games',
+  game: 'games',
   user: 'user',
 });
 

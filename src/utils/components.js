@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect, } from 'react-redux';
 
+import Loading from '../ui/Loading';
+
 
 export const withAsync = (async, options) => {
   return (WrappedComponent) => {
@@ -44,7 +46,7 @@ export const withAsync = (async, options) => {
         } = this.state;
 
         if (loading) {
-          return <div>Loading...{this.constructor.displayName}</div>
+          return <Loading />
         }
 
         return <WrappedComponent {...this.props} />
