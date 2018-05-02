@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { proxy } from '../resources/utils';
 import Task from '../ui/Task';
+import { CompetitorFlag } from '../ui';
 import {
   HighVoltageIcon,
   MoreInformationIcon,
@@ -14,7 +15,7 @@ import {
 const GameTasks = ({ more, games, }) => {
   // TODO proxy game
   let tasks = games.map(({ id, competitor_a, competitor_b, }) => ({
-    icon: <HighVoltageIcon />,
+    icon: <div className="double-flags"><CompetitorFlag name={competitor_a.name} cut="bottom" /><CompetitorFlag name={competitor_b.name} cut="top" /></div>,
     message: <Link to={`/games/${id}`}>you haven't predict {competitor_a.name} vs. {competitor_b.name}</Link>,
   }));
   if (more) {

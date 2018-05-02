@@ -1,3 +1,8 @@
+html.fixed {
+  position: fixed;
+  right: 0;
+  left: 0;
+}
 body {
   background-color: #eee;
 }
@@ -457,6 +462,7 @@ a.button {
 .modal {
   margin: 24px;
   padding: 24px;
+  padding-top: 8px;
   min-width: 300px;
   width: 100%;
   max-width: 1000px;
@@ -630,6 +636,14 @@ a.button {
 }
 .task .icon {
   margin-right: 8px;
+}
+.double-flags {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+.double-flags svg {
+  position: absolute;
 }
 header {
   position: fixed;

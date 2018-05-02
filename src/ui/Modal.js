@@ -9,10 +9,12 @@ class Modal extends Component {
   }
 
   componentDidMount() {
+    document.getElementsByTagName('html')[0].className = 'fixed';
     window.addEventListener('keydown', this.onKeydown);
   }
 
   componentWillUnmount() {
+    document.getElementsByTagName('html')[0].className = 'static';
     window.removeEventListener('keydown', this.onKeydown);
   }
 

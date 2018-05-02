@@ -29,7 +29,8 @@ class Games extends Component {
       groupBy[day].games.push(game);
     });
 
-    const days = sortBy(values(groupBy), 'day').slice(0, 4);
+    //const days = sortBy(values(groupBy), 'day').slice(0, 4);
+    const days = sortBy(values(groupBy), 'day');
 
     let past = false, previous = false;
     return (
@@ -46,7 +47,6 @@ class Games extends Component {
         previous = past;
         past = m.isBefore(moment.utc())
         const first = previous === true && past === false
-        console.log(first, day);
         return (
           <div className={`day ${past ? 'past' : ''}`} key={day} ref={first && this._storeRef}>
             <h2>{title}</h2>
