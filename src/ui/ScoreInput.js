@@ -21,7 +21,13 @@ class ScoreInput extends Component {
     }
   }
 
-  format = (v) => v === null || isNaN(parseInt(v, 10)) ? '' : parseInt(v, 10);
+  format = (v) => {
+    if (this.props.disabled) {
+      return v;
+    } else {
+      return v === null || isNaN(parseInt(v, 10)) ? '' : parseInt(v, 10);
+    }
+  }
 
   onChange = (evt) => {
     this.setState({ value: this.format(evt.target.value) });
@@ -50,6 +56,10 @@ class ScoreInput extends Component {
   onClick = (evt) => {
     evt.stopPropagation();
     evt.preventDefault();
+    this.setState({
+      saving: false,
+      saved: false,
+    });
     return false;
   };
 
@@ -80,8 +90,10 @@ class ScoreInput extends Component {
           value={this.state.value}
           autoComplete="off"
         />
-        {saving && 'saving...'}
-        {saved && 'saved'}
+        <div className={`async-status${saved ? ' saved' : ''}`}>
+          {saving && 'saving'}
+          {saved && 'saved'}
+        </div>
       </div>
     );
   }
@@ -92,8 +104,17 @@ const mapStateToProps = (state, ownProps) => {
   const { gameId } = ownProps;
 
   const bet = values(state.bet).find(bet => bet.user.id === userId && bet.game.id === gameId) || {};
+  let value = bet[ownProps.name];
+
+  const game = state.games[gameId];
+  if (game.locked) {
+    value = '?';
+  }
+  if (game[ownProps.name] !== null) {
+    value = game[ownProps.name];
+  }
   return {
-    value: bet[ownProps.name],
+    value,
   }
 }
 

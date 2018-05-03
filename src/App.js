@@ -11,7 +11,6 @@ import {
   Games,
   Login,
   Signup,
-  Bets,
   Leaderboard,
 } from './views';
 

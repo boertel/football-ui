@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { asyncConnect } from '../utils/components';
 import { GameCard } from '../ui';
 import { proxy } from '../resources/utils';

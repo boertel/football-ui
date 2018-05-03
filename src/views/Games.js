@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { asyncConnect } from '../utils/components';
 import { loadGames } from '../resources/games';
-import { loadMyBets } from '../resources/bet';
 import GameItem from './Game';
 import GameView from './GameView';
 import PrivateRoute from '../PrivateRoute';
@@ -15,7 +14,9 @@ class Games extends Component {
   _storeRef = (ref) => this._ref = ref;
 
   componentDidMount() {
-    this._ref.scrollIntoView();
+    if (this._ref) {
+      this._ref.scrollIntoView();
+    }
   }
 
   render() {

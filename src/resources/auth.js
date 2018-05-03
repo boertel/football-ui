@@ -17,19 +17,31 @@ export function checkAuthentication() {
   }
 }
 
+const authenticated = (response) => ([
+  {
+    type: AUTHENTICATED,
+    payload: {
+      authenticated: true,
+    },
+  },
+  {
+    type: LOAD,
+    payload: response.data,
+  }
+])
+
 export function login(data) {
   return dispatch => {
     return api.post('/users/login/', data).then(response => {
-      dispatch({
-        type: AUTHENTICATED,
-        payload: {
-          authenticated: true,
-        },
-      });
-      dispatch({
-        type: LOAD,
-        payload: response.data,
-      })
+      authenticated(response).map(dispatch);
+    });
+  }
+}
+
+export function signup(data) {
+  return dispatch => {
+    return api.post('/users/', data).then(response => {
+      authenticated(response).map(dispatch);
     });
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Modal extends Component {
   onKeydown = (evt) => {
-    console.log(evt.key)
     if (evt.key === 'Escape') {
       this.goBack();
     }
@@ -29,7 +28,7 @@ class Modal extends Component {
   }
 
   render() {
-    const { history, children } = this.props;
+    const { children } = this.props;
     return (
       <div
         onClick={this.goBack}

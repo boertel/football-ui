@@ -1,27 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
-import { Link } from 'react-router-dom';
 
 import { withClassNames } from './utils';
-import Bets from '../views/Bets';
-import PrivateRoute from '../PrivateRoute';
 import GameMetadata from './GameMetadata';
 import GameScore from './GameScore';
-
-
-const getStatus = (score_a, score_b, bet) => {
-  if (score_a !== null && score_b !== null) {
-    if (score_a === bet.score_a && score_b === bet.score_b) {
-      return 'perfect';
-    }
-    if (score_a >= bet.score_a && score_b >= bet.score_b) {
-      return 'win';
-    }
-    return 'loss';
-  }
-  return 'unknow';
-}
+import { getStatus } from '../resources/utils';
 
 
 class GameCard extends React.Component {
@@ -51,15 +35,16 @@ class GameCard extends React.Component {
       bet,
       group,
       locked,
+      isView,
     } = this.props;
 
     const className = classNames(this.props.className, getStatus(score_a, score_b, bet))
 
     return (
       <div className={className}>
-        <GameMetadata group={group} start={start} />
+        <GameMetadata group={group} start={start} gameId={id} />
         <div className="game-content">
-          <GameScore name="score_a" competitor_name={competitor_a.name} id={id} locked={locked} />
+          <GameScore name="score_a" competitor_name={competitor_a.name} id={id} locked={locked} autoFocus={isView ? true : false} />
           <GameScore name="score_b" competitor_name={competitor_b.name} id={id} locked={locked} />
         </div>
         {locked ? (

@@ -7,7 +7,6 @@ import { proxy } from '../resources/utils';
 import Task from '../ui/Task';
 import { CompetitorFlag } from '../ui';
 import {
-  HighVoltageIcon,
   MoreInformationIcon,
 } from '../icons';
 

@@ -1,6 +1,7 @@
 .score-input
     margin: pad(4)
     width: 60px
+    position: relative
 
     input
         border-radius: $border-radius
@@ -14,3 +15,13 @@
 
         &[disabled]
             background-color: rgba($grey, 0.2)
+
+    .async-status
+        position: absolute
+        bottom: 100%
+        width: 100%
+        text-align: center
+        transition: opacity .4s ease-out 3s
+
+        &.saved
+            opacity: 0

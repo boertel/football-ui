@@ -28,7 +28,14 @@ export const withAsync = (async, options) => {
         }
 
         this.setState({ loading: true, });
-        return async(props).then(this.done);
+        return async(props)
+          .then(this.done)
+          .catch(error => {
+            this.done()
+            this.setState({
+              error,
+            });
+          });
       }
 
       componentDidMount() {

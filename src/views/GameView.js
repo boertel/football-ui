@@ -10,7 +10,7 @@ import { withModal } from '../ui/Modal';
 const GameView = ({ id, next }) => {
   return (
     <div>
-      <GameItem id={id} />
+      <GameItem id={id} isView={true} />
       <Bets gameId={id} />
       <div className="modal-actions">
         <Link className="button secondary" to={`/games/${next}`}>Next</Link>

@@ -40,3 +40,18 @@ export const proxy = (obj, state, exclude=[]) => {
   }
   return new Proxy(obj, handler);
 }
+
+
+
+export const getStatus = (score_a, score_b, bet) => {
+  if (score_a !== null && score_b !== null) {
+    if (score_a === bet.score_a && score_b === bet.score_b) {
+      return 'perfect';
+    }
+    if (score_a >= bet.score_a && score_b >= bet.score_b) {
+      return 'win';
+    }
+    return 'loss';
+  }
+  return 'unknow';
+}

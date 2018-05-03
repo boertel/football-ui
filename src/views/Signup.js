@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withFormik, Field } from 'formik';
 
 import {
@@ -12,7 +13,7 @@ import {
   TextField,
 } from '../fields';
 
-import api from '../api';
+import { signup } from '../resources/auth';
 
 
 
@@ -51,13 +52,13 @@ const validate = (values, props) => {
   return errors;
 };
 const handleSubmit = (values, { props, setSubmitting, setErrors }) => {
-  api.post('/users/', values).then(response => {
-    console.log(response);
+  props.signup(values).then(response => {
+    props.history.push('/dashboard');
   });
 };
 
-export default withFormik({
+export default connect(null, { signup, })(withFormik({
   mapPropsToValues,
   validate,
   handleSubmit,
-})(SignupForm);
+})(SignupForm));

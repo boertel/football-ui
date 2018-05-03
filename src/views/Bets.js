@@ -4,10 +4,7 @@ import values from 'lodash/values';
 
 import { asyncConnect } from '../utils/components';
 import { loadBets } from '../resources/bet';
-import { loadGames } from '../resources/games';
 import { proxy } from '../resources/utils';
-
-import Game from './Game';
 
 
 const competitorAwins = ({ score_a, score_b }) => score_a > score_b;
