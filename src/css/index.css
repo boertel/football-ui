@@ -504,6 +504,17 @@ a.button {
   background-color: #f00;
   color: #fff;
 }
+.badge.loss {
+  color: #fff;
+  background-color: #f00;
+}
+.badge.win {
+  color: #fff;
+  background-color: #008000;
+}
+.badge.perfect {
+  background-color: #ff0;
+}
 .loading {
   display: flex;
   justify-content: center;
@@ -645,6 +656,8 @@ a.button {
   padding: 16px;
   margin: 16px 0;
   background-color: #fff;
+  text-decoration: none;
+  color: #333;
 }
 .task .icon {
   margin-right: 8px;

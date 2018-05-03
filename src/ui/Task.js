@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Task = ({ message, icon, }) => {
+
+const Task = ({ message, icon, to='/', }) => {
   return (
-    <div className="task">
+    <Link className="task" to={to}>
       <div className="icon">{icon}</div>
       <div className="message">{message}</div>
-    </div>
+    </Link>
   );
 }
 

@@ -5,7 +5,7 @@ import { getStatus, proxy } from '../resources/utils';
 import Badge from './Badge';
 
 
-const Points = ({ points }) => points !== undefined ? <Badge>{points} points</Badge> : <div />
+const Points = ({ status, points }) => points !== undefined ? <Badge className={status}>{points} points</Badge> : <div />
 
 const mapStateToProps = (state, ownProps) => {
   const game = proxy(state.games[ownProps.gameId], state);

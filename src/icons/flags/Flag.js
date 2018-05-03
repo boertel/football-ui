@@ -3,7 +3,7 @@ import React from 'react';
 const Flag = ({ size, viewBox, cut, children, ...rest }) => {
   let defs = null;
   let clipPath = null;
-  const hypotenuse = parseInt((size ** 2 + size ** 2), 10);
+  const hypotenuse = parseInt(Math.sqrt((size ** 2 + size ** 2)), 10);
   if (cut === 'bottom') {
     defs = (
       <defs>

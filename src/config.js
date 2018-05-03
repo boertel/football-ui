@@ -1,5 +1,5 @@
 const domains = {
-  api: 'http://localhost:8000/api/v1',
+  api: 'https://football-worldcup-2018.herokuapp.com/api/v1',
 }
 
 export {

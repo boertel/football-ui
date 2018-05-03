@@ -1,0 +1,23 @@
+#!/bin/bash
+
+HEROKU_APP="football-worldcup-2018"
+BUCKET="football-worldcup2018/bundles/"
+
+GITROOT=$(git root)
+
+JS=$GITROOT/build/static/js/*.js
+CSS=$GITROOT/build/static/css/*.css
+
+
+HASH=$(git log --pretty=format:'%h' -n 1)
+
+BUILD_PATH=$GITROOT/build/tmp/$HASH
+mkdir -p $BUILD_PATH
+
+cp $JS $BUILD_PATH/main.js
+cp $CSS $BUILD_PATH/main.css
+
+
+aws s3 cp $GITROOT/build/tmp/ s3://$BUCKET --recursive
+
+heroku config:set BUNDLE_VERSION=$HASH --app $HEROKU_APP
