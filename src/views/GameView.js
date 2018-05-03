@@ -7,7 +7,8 @@ import Bets from './Bets';
 import GameItem from './Game';
 import { withModal } from '../ui/Modal';
 
-const GameView = ({ id, next }) => {
+const GameView = (props) => {
+  const { id, next } = props;
   return (
     <div>
       <GameItem id={id} isView={true} />

@@ -36,6 +36,20 @@ ul, li
     margin-top: 60px
     padding: pad(6)
 
+
+.instructions
+    margin-bottom: pad(20)
+
+    li
+        position: relative
+        margin-left: pad(10)
+        margin-bottom: pad(4)
+        &::before
+            position: absolute
+            content: '-'
+            right: 100%
+            margin-right: pad(2)
+
 @import './animations'
 @import './ui'
 

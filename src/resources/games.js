@@ -1,6 +1,8 @@
-import { keyBy, mapValues, } from 'lodash';
+import { get, keyBy, mapValues, } from 'lodash';
 import api from '../api'
 import { createProxify } from './utils';
+import { LOAD as BET_LOAD } from './bet';
+
 
 export const LOAD = 'football/games/LOAD';
 
@@ -27,6 +29,19 @@ const proxify = createProxify({
 
 export default function (state=initialState, action) {
   switch (action.type) {
+    case BET_LOAD:
+      const gameId = get(action, ['params', 'game']);
+      if (gameId) {
+        return {
+          ...state,
+          [gameId]: {
+            ...state[gameId],
+            bets: true,
+          }
+        }
+      }
+      return state
+
     case LOAD:
       return {
         ...state,

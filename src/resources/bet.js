@@ -26,6 +26,7 @@ export const loadBets = (params) => {
     return api.get('/bets/', { params, }).then(response => {
       dispatch({
         type: LOAD,
+        params,
         payload: keyBy(response.data, 'id')
       });
     });

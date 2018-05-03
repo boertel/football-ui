@@ -1,4 +1,6 @@
-import { mapValues, get } from 'lodash'
+import { Component } from 'react';
+import { isEqual, mapValues, get } from 'lodash'
+
 
 export const createProxify = (mapping) => {
   return (obj) => {
@@ -41,6 +43,21 @@ export const proxy = (obj, state, exclude=[]) => {
   return new Proxy(obj, handler);
 }
 
+
+export class ProxyComponent extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    let equality = false
+    for (let key in nextProps) {
+      const prop = nextProps[key];
+      if (typeof prop === 'object' && prop !== null) {
+        equality = isEqual(this.props[key], prop);
+      } else {
+        equality = this.props[key] === nextProps[key];
+      }
+    }
+    return !equality;
+  }
+}
 
 
 export const getStatus = (score_a, score_b, bet) => {

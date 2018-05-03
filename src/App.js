@@ -33,7 +33,7 @@ class App extends Component {
               <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/leaderboard" component={Leaderboard} />
               <PrivateRoute path="/games" component={Games} />
-              <Route path="/" component={AuthRedirect} />
+              <Route path="/" exact component={AuthRedirect} />
             </div>
           </Router>
         </Auth>

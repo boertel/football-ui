@@ -2,10 +2,11 @@ import React from 'react';
 
 import CompetitorFlag from './CompetitorFlag';
 import ScoreInput from './ScoreInput';
+import { withClassNames } from './utils';
 
 
-const GameScore = ({ competitor_name, id, locked, name, autoFocus, }) => (
-  <div className="score">
+const GameScore = ({ className, competitor_name, id, locked, name, autoFocus, }) => (
+  <div className={className}>
     <div className="competitor">
       <CompetitorFlag name={competitor_name} />
       <div className="competitor-name">{competitor_name}</div>
@@ -14,4 +15,4 @@ const GameScore = ({ competitor_name, id, locked, name, autoFocus, }) => (
   </div>
 );
 
-export default GameScore;
+export default withClassNames('score')(GameScore);

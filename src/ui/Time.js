@@ -1,12 +1,13 @@
 import React from 'react';
 import moment from 'moment';
+import { withClassNames } from './utils';
 
-const Time = ({ time, format }) => {
-  return <div className="time">{moment(time).format(format)}</div>
+const Time = ({ time, format, className, }) => {
+  return <div className={className}>{moment(time).format(format)}</div>
 }
 
 Time.defaultProps = {
   format: 'LLL',
 };
 
-export default Time;
+export default withClassNames('time')(Time);

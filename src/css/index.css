@@ -39,6 +39,20 @@ li {
   margin-top: 60px;
   padding: 24px;
 }
+.instructions {
+  margin-bottom: 80px;
+}
+.instructions li {
+  position: relative;
+  margin-left: 40px;
+  margin-bottom: 16px;
+}
+.instructions li::before {
+  position: absolute;
+  content: '-';
+  right: 100%;
+  margin-right: 8px;
+}
 .fade-enter {
   opacity: 0;
   z-index: 1;
@@ -515,6 +529,30 @@ a.button {
 .badge.perfect {
   background-color: #ff0;
 }
+.badge.groupa {
+  background-color: #add8e6;
+}
+.badge.groupb {
+  background-color: #90ee90;
+}
+.badge.groupc {
+  background-color: #fafad2;
+}
+.badge.groupd {
+  background-color: #ffb6c1;
+}
+.badge.groupe {
+  background-color: #ffa07a;
+}
+.badge.groupf {
+  background-color: #20b2aa;
+}
+.badge.groupg {
+  background-color: #ffffe0;
+}
+.badge.grouph {
+  background-color: #87cefa;
+}
 .loading {
   display: flex;
   justify-content: center;
@@ -531,45 +569,47 @@ a.button {
   color: #333;
 }
 .game-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+  position: relative;
+  display: grid;
+  grid-template-columns: 40% 10% 10% 40%;
+  grid-template-rows: 20% 60% 20%;
   padding: 16px;
-  border-left-width: 4px;
-  border-color: transparent;
-  border-style: solid;
   background-color: #fff;
+  border-radius: 2px;
 }
 .game-card.win {
   border-color: #008000;
+  background-color: rgba(0,128,0,0.2);
 }
 .game-card.perfect {
   border-color: #ff0;
+  background-color: rgba(255,255,0,0.2);
 }
 .game-card.loss {
   border-color: #f00;
   background-color: rgba(255,0,0,0.2);
 }
-.game-card .game-metadata {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 16px;
+.game-card > div {
+  margin: 8px;
 }
-.game-card .game-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.game-card .time,
+.game-card .predictions {
+  grid-column-end: span 2;
+  justify-self: center;
+}
+.game-card .badge {
+  justify-self: flex-start;
+}
+.game-card .badge.points,
+.game-card .badge.live {
+  justify-self: flex-end;
 }
 .game-card .score {
+  grid-column-end: span 2;
   display: flex;
-  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
-  flex-basis: 50%;
+  margin-bottom: 24px;
 }
 .game-card .score .competitor {
   display: flex;
@@ -578,19 +618,22 @@ a.button {
 .game-card .score .competitor .competitor-name {
   padding: 0 16px;
 }
-.game-card .score:last-child {
+.game-card .competitor-b {
   flex-direction: row-reverse;
 }
-.game-card .score:last-child .competitor {
+.game-card .competitor-b .competitor {
   flex-direction: row-reverse;
 }
-.game-card .game-my-bet {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.game-card .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  margin: 0;
+  background-color: #ccc;
 }
 .score-input {
-  margin: 16px;
   width: 60px;
   position: relative;
 }
