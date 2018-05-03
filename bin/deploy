@@ -3,8 +3,9 @@
 HEROKU_APP="football-worldcup-2018"
 BUCKET="football-worldcup2018/bundles/"
 
-GITROOT=$(git root)
+PUBLIC_URL="https://s3-us-west-2.amazonaws.com/football-worldcup2018/bundles/" REACT_APP_API_DOMAIN="https://football-worldcup-2018.herokuapp.com/" yarn build
 
+GITROOT=$(git root)
 JS=$GITROOT/build/static/js/*.js
 CSS=$GITROOT/build/static/css/*.css
 
