@@ -1,9 +1,9 @@
 import api from '../api';
 
 
-const LOAD = 'football/auth/LOAD';
-const AUTHENTICATED = 'football/auth/AUTHENTICATED';
-const LOGOUT = 'football/auth/LOGOUT';
+export const LOAD = 'football/auth/LOAD';
+export const AUTHENTICATED = 'football/auth/AUTHENTICATED';
+export const LOGOUT = 'football/auth/LOGOUT';
 
 
 export function checkAuthentication() {
@@ -53,7 +53,7 @@ export function logout() {
       dispatch({
         type: AUTHENTICATED,
         payload: {
-          authenticated: true,
+          authenticated: false,
         },
       });
       dispatch({

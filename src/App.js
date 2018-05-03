@@ -10,8 +10,10 @@ import {
   Header,
   Games,
   Login,
+  Logout,
   Signup,
   Leaderboard,
+  AuthRedirect,
 } from './views';
 
 import store from './store';
@@ -27,9 +29,11 @@ class App extends Component {
               <Header />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
+              <Route path="/logout" component={Logout} />
               <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/leaderboard" component={Leaderboard} />
               <PrivateRoute path="/games" component={Games} />
+              <Route path="/" component={AuthRedirect} />
             </div>
           </Router>
         </Auth>

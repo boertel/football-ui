@@ -1,6 +1,7 @@
 import api from '../api';
 import mapValues from 'lodash/mapValues';
 import { LOAD as BET_LOAD } from './bet';
+import { LOAD as AUTH_LOAD } from './auth';
 
 export const LOAD = 'football/user/LOAD';
 
@@ -22,6 +23,7 @@ const initialState = {}
 export default function (state=initialState, action) {
   switch(action.type) {
     case LOAD:
+    case AUTH_LOAD:
       return {
         ...state,
         [action.payload.id]: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik, Field } from 'formik';
+import { Link } from 'react-router-dom';
 
 import {
   FormSection,
@@ -28,6 +29,7 @@ const LoginForm = ({ values, handleSubmit, isSubmitting }) => (
         <Button type="submit" submitting={isSubmitting}>Login</Button>
       </FormActions>
     </FormSection>
+    <div>or <Link to="/signup">Create an account</Link></div>
   </form>
 )
 
