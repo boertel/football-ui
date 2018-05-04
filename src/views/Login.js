@@ -34,7 +34,7 @@ const LoginForm = ({ values, handleSubmit, isSubmitting }) => (
 )
 
 
-const mapPropsToValues = props => ({ username: 'benjamin.oertel@gmail.com', password: '12345'});
+const mapPropsToValues = props => ({ username: '', password: ''});
 
 const handleSubmit = (values, { props, setSubmitting, setErrors }) => {
   props.login(values).then(response => {
