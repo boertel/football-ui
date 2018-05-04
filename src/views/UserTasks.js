@@ -21,7 +21,7 @@ const UserTasks = ({ verified, avatar, gravatar }) => {
       'message': <div><img src={`https://www.gravatar.com/avatar/${gravatar}`} />Looks like your friends can't see your beautiful face.</div>
     });
   }
-  return <div>{tasks.map((task, index) => <Task {...task} key={index} />)}</div>;
+  return <div className="tasks-group">{tasks.map((task, index) => <Task {...task} key={index} />)}</div>;
 }
 
 export default connect(state => ({...state.user[state.auth.id]}))(UserTasks);

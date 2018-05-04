@@ -24,7 +24,7 @@ const GameTasks = ({ more, games, }) => {
     });
   }
   return (
-    <div>
+    <div className="tasks-group">
     {tasks.map((task, index) => <Task {...task} key={index} />)}
     </div>
   );

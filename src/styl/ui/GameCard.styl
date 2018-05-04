@@ -5,10 +5,17 @@
 .game
     display: block
     border-radius: $border-radius
-    box-shadow: 0px 0px 6px 1px rgba(173, 173, 173, 0.5)
     margin: pad(4) 0
     text-decoration: none
     color: $default
+    box-shadow: 0px 0px 6px 1px rgba(173, 173, 173, 0.5)
+    transition: box-shadow .3s ease-in-out
+    background-color: #fff
+    border-radius: $border-radius
+
+    &:hover
+        box-shadow: 0px 0px 6px 1px rgba(130, 130, 130, 0.8)
+
 
 
 .game-card
@@ -17,8 +24,6 @@
     grid-template-columns: 40% 10% 10% 40%
     grid-template-rows: 20% 60% 20%
     padding: pad(4)
-    background-color: #fff
-    border-radius: $border-radius
 
     &.win
         border-color: $win

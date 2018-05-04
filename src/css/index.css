@@ -551,7 +551,7 @@ a.button {
   background-color: #ffffe0;
 }
 .badge.grouph {
-  background-color: #87cefa;
+  background-color: #f08080;
 }
 .loading {
   display: flex;
@@ -563,10 +563,16 @@ a.button {
 .game {
   display: block;
   border-radius: 2px;
-  box-shadow: 0px 0px 6px 1px rgba(173,173,173,0.5);
   margin: 16px 0;
   text-decoration: none;
   color: #333;
+  box-shadow: 0px 0px 6px 1px rgba(173,173,173,0.5);
+  transition: box-shadow 0.3s ease-in-out;
+  background-color: #fff;
+  border-radius: 2px;
+}
+.game:hover {
+  box-shadow: 0px 0px 6px 1px rgba(130,130,130,0.8);
 }
 .game-card {
   position: relative;
@@ -574,8 +580,6 @@ a.button {
   grid-template-columns: 40% 10% 10% 40%;
   grid-template-rows: 20% 60% 20%;
   padding: 16px;
-  background-color: #fff;
-  border-radius: 2px;
 }
 .game-card.win {
   border-color: #008000;
@@ -692,6 +696,12 @@ a.button {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.tasks {
+  margin: 48px 0;
+}
+.tasks-group {
+  margin-bottom: 48px;
 }
 .task {
   display: flex;
