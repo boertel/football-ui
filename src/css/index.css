@@ -771,7 +771,6 @@ header .header-profile {
   padding: 16px;
 }
 .user.me {
-  background-color: rgba(0,128,0,0.2);
   font-weight: 700;
 }
 .current-games {
