@@ -1,6 +1,9 @@
 @import './variables'
 @import './colors'
 
+html, body, #root
+    height: 100%
+
 html.fixed
     position: fixed
     right: 0
@@ -33,8 +36,14 @@ ul, li
 .content
     max-width: 800px
     margin: 0 auto
-    margin-top: 60px
     padding: pad(6)
+    padding-top: pad(6) + 60
+    min-height: 100%
+    display: flex
+    flex-direction: column
+
+    > :first-child
+        flex-grow: 1
 
 
 .instructions
@@ -54,3 +63,5 @@ ul, li
 @import './ui'
 
 @import './Header'
+@import './Leaderboard'
+@import './Dashboard'

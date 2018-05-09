@@ -1,15 +1,22 @@
 import React from 'react';
-import get from 'lodash/get';
+import { get, values } from 'lodash';
 
 import { asyncConnect } from '../utils/components';
 import { loadUser } from '../resources/user';
 import { loadGames } from '../resources/games';
 import Tasks from './Tasks';
+import NextGame from './NextGame';
+import CurrentGames from './CurrentGames';
 
 
-const Dashboard = ({ first_name }) => (
+
+const Dashboard = ({ first_name, }) => (
   <div>
-    <h1>Hi {first_name}!</h1>
+    <h1>Hi!</h1>
+
+    <CurrentGames />
+    <NextGame />
+
     <Tasks />
   </div>
 )

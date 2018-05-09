@@ -63,7 +63,7 @@ const mapStateToProps = (state, ownProps) => {
     gameId,
     ...game,
     bets,
-    refresh: game.bets !== true,
+    refresh: game.locked && game.bets !== true,
   }
 }
 

@@ -6,6 +6,11 @@ import Loading from '../ui/Loading';
 
 
 export const withAsync = (async, options) => {
+  options = {
+    loader: Loading,
+    ...options,
+  };
+
   return (WrappedComponent) => {
     return class WithAsyncComponent extends Component {
       constructor(props) {
@@ -52,8 +57,8 @@ export const withAsync = (async, options) => {
           loading,
         } = this.state;
 
-        if (loading) {
-          return <Loading />
+        if (loading && options.loader) {
+          return React.createElement(options.loader)
         }
 
         return <WrappedComponent {...this.props} />

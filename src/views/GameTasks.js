@@ -14,7 +14,7 @@ const GameTasks = ({ more, games, }) => {
   let tasks = games.map(({ id, competitor_a, competitor_b, }) => ({
     to: `/games/${id}`,
     icon: <div className="double-flags"><CompetitorFlag name={competitor_a.name} cut="bottom" /><CompetitorFlag name={competitor_b.name} cut="top" /></div>,
-    message: <div>you haven't predict {competitor_a.name} vs. {competitor_b.name}</div>,
+    message: <div>You haven't predict <strong>{competitor_a.name}</strong> vs. <strong>{competitor_b.name}</strong></div>,
   }));
   if (more > 2) {
     tasks.push({

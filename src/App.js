@@ -16,6 +16,8 @@ import {
   AuthRedirect,
 } from './views';
 
+import Footer from './ui/Footer';
+
 import store from './store';
 
 
@@ -25,15 +27,18 @@ class App extends Component {
       <Provider store={store}>
         <Auth>
           <Router>
-            <div className="content">
+            <div style={{height: '100%'}}>
               <Header />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Route path="/logout" component={Logout} />
-              <PrivateRoute path="/dashboard" component={Dashboard} />
-              <PrivateRoute path="/leaderboard" component={Leaderboard} />
-              <PrivateRoute path="/games" component={Games} />
-              <Route path="/" exact component={AuthRedirect} />
+              <div className="content">
+                <Route path="/signup" component={Signup} />
+                <Route path="/login" component={Login} />
+                <Route path="/logout" component={Logout} />
+                <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/leaderboard" component={Leaderboard} />
+                <PrivateRoute path="/games" component={Games} />
+                <Route path="/" exact component={AuthRedirect} />
+                <Footer />
+              </div>
             </div>
           </Router>
         </Auth>
