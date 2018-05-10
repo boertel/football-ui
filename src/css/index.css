@@ -496,6 +496,12 @@ a.button {
   border-radius: 2px;
   z-index: 1;
 }
+@media (max-width: 640px) {
+  .modal {
+    margin: 0;
+    height: 100%;
+  }
+}
 .modal .modal-header {
   display: flex;
   justify-content: flex-end;
@@ -631,6 +637,11 @@ a.button {
 }
 .game-card .score .competitor .competitor-name {
   padding: 0 16px;
+}
+@media (max-width: 640px) {
+  .game-card .score {
+    flex-direction: column;
+  }
 }
 .game-card .competitor-b {
   flex-direction: row-reverse;

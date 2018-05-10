@@ -1,0 +1,15 @@
+.leaderboard {
+  margin-bottom: pad(10);
+}
+.leaderboard h3 {
+  margin-bottom: pad(4);
+}
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: pad(4);
+}
+.user.me {
+  font-weight: 700;
+}
