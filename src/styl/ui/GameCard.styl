@@ -43,9 +43,14 @@
     .time, .predictions
         grid-column-end: span 2
         justify-self: center
+        +mobile()
+            grid-column-end: span 1
 
     .badge
         justify-self: flex-start
+        align-items: center
+        +mobile()
+            grid-column-end: span 2
         &.points, &.live
             justify-self: flex-end
 
@@ -60,6 +65,10 @@
             display: flex
             align-items: center
 
+            +mobile()
+                flex-direction: column
+                margin-bottom: pad(4)
+
             .competitor-name
                 padding: 0 pad(4)
 
@@ -68,8 +77,13 @@
 
     .competitor-b
         flex-direction: row-reverse
+        +mobile()
+            flex-direction: column
+
         .competitor
             flex-direction: row-reverse
+            +mobile()
+                flex-direction: column
 
     .progress-bar
         position: absolute

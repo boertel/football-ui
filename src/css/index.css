@@ -617,8 +617,20 @@ a.button {
   grid-column-end: span 2;
   justify-self: center;
 }
+@media (max-width: 640px) {
+  .game-card .time,
+  .game-card .predictions {
+    grid-column-end: span 1;
+  }
+}
 .game-card .badge {
   justify-self: flex-start;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .game-card .badge {
+    grid-column-end: span 2;
+  }
 }
 .game-card .badge.points,
 .game-card .badge.live {
@@ -635,6 +647,12 @@ a.button {
   display: flex;
   align-items: center;
 }
+@media (max-width: 640px) {
+  .game-card .score .competitor {
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+}
 .game-card .score .competitor .competitor-name {
   padding: 0 16px;
 }
@@ -646,8 +664,18 @@ a.button {
 .game-card .competitor-b {
   flex-direction: row-reverse;
 }
+@media (max-width: 640px) {
+  .game-card .competitor-b {
+    flex-direction: column;
+  }
+}
 .game-card .competitor-b .competitor {
   flex-direction: row-reverse;
+}
+@media (max-width: 640px) {
+  .game-card .competitor-b .competitor {
+    flex-direction: column;
+  }
 }
 .game-card .progress-bar {
   position: absolute;
