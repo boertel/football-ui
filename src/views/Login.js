@@ -8,6 +8,7 @@ import {
   FormGroup,
   FormActions,
   Button,
+  Error,
 } from '../ui';
 
 import {
@@ -16,14 +17,15 @@ import {
 
 import { login } from '../resources/auth';
 
-const LoginForm = ({ values, handleSubmit, isSubmitting }) => (
+const LoginForm = ({ values, handleSubmit, isSubmitting, errors }) => (
   <form onSubmit={handleSubmit}>
     <FormSection>
+      {errors.form && <Error>{errors.form}</Error>}
       <FormGroup label="Email Address">
-        <Field name="username" component={TextField} />
+        <Field name="username" component={TextField} required={true} />
       </FormGroup>
       <FormGroup label="Password">
-        <Field name="password" component={TextField} type="password" />
+        <Field name="password" component={TextField} type="password" required={true} />
       </FormGroup>
       <FormActions>
         <Button type="submit" submitting={isSubmitting}>Login</Button>
@@ -38,9 +40,14 @@ const mapPropsToValues = props => ({ username: '', password: ''});
 
 const handleSubmit = (values, { props, setSubmitting, setErrors }) => {
   props.login(values).then(response => {
-    setSubmitting(false);
-    const next = props.location.next || '/dashboard';
-    props.history.push(next);
+    if (response.data.ok !== 'false') {
+      setSubmitting(false);
+      const next = props.location.next || '/dashboard';
+      props.history.push(next);
+    } else {
+      setErrors({'form': 'Email Address and/or Password are incorrect. Please try again.'})
+      setSubmitting(false);
+    }
   });
 };
 

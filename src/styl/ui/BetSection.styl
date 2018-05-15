@@ -4,14 +4,12 @@
     padding-top: pad(2)
 
 .bet-sections
-    display: flex
-    justify-content: space-between
     margin-top: pad(4)
+    display: grid
+    grid-template-columns: 33% 33% 33%
+    grid-column-gap: 10px
 
 .bet-section
-    flex-grow: 1
-    padding-right: pad(4)
-
     h4
         margin-bottom: pad(3)
         text-align: center
@@ -31,3 +29,6 @@
     justify-content: space-between
     align-items: center
     width: 100%
+
+    &.me
+        font-weight: 700

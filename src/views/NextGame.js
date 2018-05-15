@@ -7,9 +7,9 @@ import { proxy } from '../resources/utils';
 
 
 const NextGame = ({ start, competitor_a, competitor_b }) => (
-  <div className="next-game">
-    <h3>What is next?</h3>
-    <div>Are you ready for {competitor_a.name} vs. {competitor_b.name} starting {moment(start).fromNow()}?</div>
+  <div className="tasks next-game">
+    <h2>What is next?</h2>
+    <div className="task">Are you ready for {competitor_a.name} vs. {competitor_b.name} starting {moment(start).fromNow()}?</div>
   </div>
 );
 

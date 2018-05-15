@@ -6,13 +6,13 @@ import { logout } from '../resources/auth';
 import { loadUser } from '../resources/user';
 import { FootballIcon, CupIcon } from '../icons';
 
-const Header = ({ full_name, points, logout }) => {
+const Header = ({ refresh, full_name, points, logout }) => {
   return (
     <header>
       <div className="header-content">
         <div><Link to="/dashboard" title="Go to dashboard"><FootballIcon size={40} /></Link></div>
         <div className="header-profile">
-          <div><Link to="/profile" title="Go to my profile">{full_name} { points !== 0 ? `(${points} points)` : null}</Link></div>
+          {!refresh ? <div><Link to="/profile" title="Go to my profile">{full_name} { points !== 0 ? `(${points} points)` : null}</Link></div> : null}
           <div><Link to="/leaderboard" title="Go to leadeboard"><CupIcon size={40} /></Link></div>
         </div>
       </div>

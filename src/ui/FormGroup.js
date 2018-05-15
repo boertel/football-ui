@@ -2,10 +2,10 @@ import React from 'react';
 import { withClassNames } from './utils';
 
 
-const FormGroup = ({label, className, children }) => {
+const FormGroup = ({label, hint, className, children }) => {
   return (
     <div className={className}>
-      {label ? <label>{label}</label> : null}
+      <label>{label}{hint ? <em>({hint})</em> : null}</label>
       {children}
     </div>
   );

@@ -21,17 +21,17 @@ import { signup } from '../resources/auth';
 const SignupForm = ({ values, handleSubmit, isSubmitting }) => (
   <form onSubmit={handleSubmit}>
     <FormSection>
-      <FormGroup label="Full name">
-        <Field name="full_name" component={TextField} />
+      <FormGroup label="Full name" hint="it will help your friends to find you.">
+        <Field name="full_name" component={TextField} required={true} />
       </FormGroup>
       <FormGroup label="Email Address">
-        <Field name="username" component={TextField} />
+        <Field name="username" component={TextField} required={true} />
       </FormGroup>
-      <FormGroup label="Password">
-        <Field name="password" component={TextField} type="password" />
+      <FormGroup label="Password" hint="6 characters minimum">
+        <Field name="password" component={TextField} type="password" required={true} />
       </FormGroup>
       <FormGroup label="Confirm Password">
-        <Field name="confirm_password" component={TextField} type="password" />
+        <Field name="confirm_password" component={TextField} type="password" required={true} />
       </FormGroup>
       <FormActions>
         <Button type="submit" submitting={isSubmitting}>Signup</Button>
@@ -42,11 +42,11 @@ const SignupForm = ({ values, handleSubmit, isSubmitting }) => (
 )
 
 
-const mapPropsToValues = props => ({ first_name: '', username: '', password: '', confirm_password: ''});
+const mapPropsToValues = props => ({ full_name: '', username: '', password: '12345', confirm_password: '12345'});
 const validate = (values, props) => {
   const errors = {};
-  if (!values.username) {
-    errors.username = 'Required';
+  if (values.password.length < 6) {
+    errors.password = 'Password need to be at least 6 characters long.';
   }
   if (values.confirm_password.length && values.password.length && values.password !== values.confirm_password) {
     errors.confirm_password = 'Confirmation password must match password.';
@@ -56,6 +56,9 @@ const validate = (values, props) => {
 const handleSubmit = (values, { props, setSubmitting, setErrors }) => {
   props.signup(values).then(response => {
     props.history.push('/dashboard');
+  }).catch(error => {
+    setErrors(error.response.data);
+    setSubmitting(false);
   });
 };
 

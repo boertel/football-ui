@@ -10,7 +10,7 @@ const Points = ({ status, live, points }) => {
   if (live) {
     return <Badge className="live">Live</Badge>
   } else if (points !== undefined) {
-    return <Badge className={`${status} points`}>{points} points</Badge>
+    return <Badge className={`${status} points`}>{ points !== 0 ? '+' : ''}{points} points</Badge>
   } else {
     return <div />
   }

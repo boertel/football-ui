@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import values from 'lodash/values';
 
 import { asyncConnect } from '../utils/components';
+import { withClassNames } from '../ui/utils';
 import { loadBets } from '../resources/bet';
 import { ProxyComponent, proxy } from '../resources/utils';
 
@@ -12,12 +13,12 @@ const competitorBwins = ({ score_a, score_b }) => score_a < score_b;
 const itIsATie = ({ score_a, score_b }) => score_a === score_b;
 
 
-const BetItem = connect((state, ownProps) => ({user: state.user[ownProps.user.id]}))(({ user, score_a, score_b }) => (
-  <div className="bet-item">
-    <div>{user.first_name}</div>
+const BetItem = connect((state, ownProps) => ({user: state.user[ownProps.user.id], currentUserId: state.auth.id,}))(withClassNames('bet-item', props => props.currentUserId === props.user.id && ' me')(({ user, currentUserId, score_a, score_b, className }) => (
+  <div className={className}>
+    <div>{user.full_name}</div>
     <div>{score_a} - {score_b}</div>
   </div>
-))
+)))
 
 const BetSection = ({ title, bets, filter }) => (
   <div className="bet-section">

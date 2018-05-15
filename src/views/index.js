@@ -12,6 +12,7 @@ import Leaderboard from './Leaderboard';
 import Login from './Login';
 import Logout from './Logout';
 import NextGame from './NextGame';
+import Profile from './Profile';
 import Signup from './Signup';
 import Tasks from './Tasks';
 import UserTasks from './UserTasks';
@@ -31,6 +32,7 @@ export {
   Login,
   Logout,
   NextGame,
+  Profile,
   Signup,
   Tasks,
   UserTasks,

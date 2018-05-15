@@ -65,7 +65,11 @@ export const getStatus = (score_a, score_b, bet) => {
     if (score_a === bet.score_a && score_b === bet.score_b) {
       return 'perfect';
     }
-    if (score_a >= bet.score_a && score_b >= bet.score_b) {
+    if (
+        (score_a > score_b && bet.score_a > bet.score_b) ||
+        (score_a === score_b && bet.score_a === bet.score_b) ||
+        (score_a < score_b && bet.score_a < bet.score_b)
+       ) {
       return 'win';
     }
     return 'loss';

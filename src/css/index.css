@@ -573,6 +573,11 @@ a.button {
   display: flex;
   justify-content: center;
 }
+.error {
+  color: #f00;
+  font-weight: 700;
+  margin: 16px 0;
+}
 .day {
   margin-bottom: 40px;
 }
@@ -626,6 +631,7 @@ a.button {
 .game-card .badge {
   justify-self: flex-start;
   align-items: center;
+  align-self: center;
 }
 @media (max-width: 640px) {
   .game-card .badge {
@@ -719,13 +725,10 @@ a.button {
   padding-top: 8px;
 }
 .bet-sections {
-  display: flex;
-  justify-content: space-between;
   margin-top: 16px;
-}
-.bet-section {
-  flex-grow: 1;
-  padding-right: 16px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-column-gap: 10px;
 }
 .bet-section h4 {
   margin-bottom: 12px;
@@ -745,6 +748,9 @@ a.button {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.bet-item.me {
+  font-weight: 700;
 }
 .tasks {
   margin: 48px 0;

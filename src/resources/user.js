@@ -1,7 +1,7 @@
 import api from '../api';
 import { mapValues, keyBy } from 'lodash';
 import { LOAD as BET_LOAD } from './bet';
-import { LOAD as AUTH_LOAD } from './auth';
+import { LOGOUT, LOAD as AUTH_LOAD } from './auth';
 
 export const LOAD = 'football/user/LOAD';
 export const LOAD_USERS = 'football/user/LOAD_USERS';
@@ -10,10 +10,12 @@ export const LOAD_USERS = 'football/user/LOAD_USERS';
 export function loadUser() {
   return dispatch => {
     return api.get('/users/me/').then(response => {
-      dispatch({
-        type: LOAD,
-        payload: response.data,
-      });
+      if (response.data.ok !== false) {
+        dispatch({
+          type: LOAD,
+          payload: response.data,
+        });
+      }
     });
   }
 }
@@ -69,6 +71,9 @@ export default function (state=initialState, action) {
         ...state,
         ...users
       }
+
+    case LOGOUT:
+      return initialState;
 
     default:
       return state;

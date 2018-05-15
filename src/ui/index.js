@@ -1,6 +1,7 @@
 import Badge from './Badge';
 import Button from './Button';
 import CompetitorFlag from './CompetitorFlag';
+import Error from './Error';
 import FieldError from './FieldError';
 import Footer from './Footer';
 import FormActions from './FormActions';
@@ -24,6 +25,7 @@ export {
   Badge,
   Button,
   CompetitorFlag,
+  Error,
   FieldError,
   Footer,
   FormActions,

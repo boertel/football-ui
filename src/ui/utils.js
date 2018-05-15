@@ -6,7 +6,16 @@ export const withClassNames = function () {
   const args = Array.prototype.slice.call(arguments);
   return WrappedComponent => {
     const WithClassNames = props => {
-      const className = classNames.apply(classNames, args.concat([props.className]));
+      const computedClassNames = args.map(arg => {
+        switch (typeof arg) {
+          case 'function':
+            return arg(props);
+          default:
+            return arg;
+        }
+      });
+
+      const className = classNames.apply(classNames, computedClassNames.concat([props.className]));
       if (typeof WrappedComponent === 'string') {
         return React.createElement(WrappedComponent, {...props, className, });
       } else {
@@ -14,7 +23,6 @@ export const withClassNames = function () {
       }
     }
 
-    //WithClassNamesComponent.displayName = `WithClassNamesComponent(${getDisplayName(WrappedComponent)})`;
     return WithClassNames;
   }
 }

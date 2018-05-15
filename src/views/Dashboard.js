@@ -1,22 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { get, values } from 'lodash';
 
 import { asyncConnect } from '../utils/components';
 import { loadUser } from '../resources/user';
 import { loadGames } from '../resources/games';
 import Tasks from './Tasks';
-import NextGame from './NextGame';
-import CurrentGames from './CurrentGames';
-
 
 
 const Dashboard = ({ first_name, }) => (
   <div>
     <h1>Hi!</h1>
-
-    <CurrentGames />
-    <NextGame />
-
+    <Link to="/games">Go to the games</Link>
     <Tasks />
   </div>
 )

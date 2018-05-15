@@ -34,6 +34,7 @@ export function login(data) {
   return dispatch => {
     return api.post('/users/login/', data).then(response => {
       authenticated(response).map(dispatch);
+      return response;
     });
   }
 }
@@ -42,7 +43,8 @@ export function signup(data) {
   return dispatch => {
     return api.post('/users/', data).then(response => {
       authenticated(response).map(dispatch);
-    });
+      return response;
+    })
   }
 }
 
@@ -74,6 +76,9 @@ export default function reducer(state=initialState, action) {
         ...state,
         ...action.payload,
       }
+
+    case LOGOUT:
+      return initialState;
 
     default:
       return state;
