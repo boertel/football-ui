@@ -821,7 +821,6 @@ header .header-profile {
   padding: 16px;
 }
 .user:hover {
-  background-color: rgba(0,128,0,0.3);
   cursor: pointer;
 }
 .user.me {
@@ -836,6 +835,16 @@ header .header-profile {
 }
 .current-games h3 .badge {
   margin-left: 8px;
+}
+.current-game {
+  display: flex;
+  align-items: center;
+}
+.current-game svg:first-child {
+  margin-right: 16px;
+}
+.current-game svg:last-child {
+  margin-left: 16px;
 }
 .friends .actions {
   display: flex;

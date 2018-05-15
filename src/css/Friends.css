@@ -1,0 +1,8 @@
+.friends .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.friends .friend-list {
+  margin: pad(4) 0;
+}

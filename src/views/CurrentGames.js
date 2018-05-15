@@ -5,13 +5,14 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 
 import { proxy } from '../resources/utils';
-import { Badge } from '../ui';
+import { Badge, Task, CompetitorFlag, } from '../ui';
+import { ClappingHandsIcon } from '../icons';
 
 const CurrentGame = connect((state, ownProps) => ({ ...proxy(state.games[ownProps.id], state) }))(({ id, competitor_a, competitor_b }) => {
+  const to = `/games/${id}`;
+  const message = <div className="current-game"><CompetitorFlag name={competitor_a.name} /> {competitor_a.name} vs. {competitor_b.name}<CompetitorFlag name={competitor_b.name} /></div>;
   return (
-    <div className="">
-      <Link to={`/games/${id}`}>{competitor_a.name} vs. {competitor_b.name}</Link>
-    </div>
+    <Task message={message} icon={<ClappingHandsIcon />} to={to} />
   );
 });
 

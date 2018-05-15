@@ -13,6 +13,9 @@
   align-items: center;
   padding: pad(4);
 }
+.user:hover {
+  cursor: pointer;
+}
 .user.me {
   font-weight: 700;
 }

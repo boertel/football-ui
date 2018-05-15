@@ -40,7 +40,7 @@ const mapPropsToValues = props => ({ username: '', password: ''});
 
 const handleSubmit = (values, { props, setSubmitting, setErrors }) => {
   props.login(values).then(response => {
-    if (response.data.ok !== 'false') {
+    if (response.data.ok !== false) {
       setSubmitting(false);
       const next = props.location.next || '/dashboard';
       props.history.push(next);

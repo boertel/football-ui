@@ -1,4 +1,5 @@
 import CameraFlashIcon from './CameraFlashIcon';
+import ClappingHandsIcon from './ClappingHandsIcon';
 import CupIcon from './CupIcon';
 import EmailIcon from './EmailIcon';
 import FootballIcon from './FootballIcon';
@@ -6,9 +7,11 @@ import FriendsIcon from './FriendsIcon';
 import HighVoltageIcon from './HighVoltageIcon';
 import Icon from './Icon';
 import MoreInformationIcon from './MoreInformationIcon';
+import StopwatchIcon from './StopwatchIcon';
 
 export {
   CameraFlashIcon,
+  ClappingHandsIcon,
   CupIcon,
   EmailIcon,
   FootballIcon,
@@ -16,4 +19,5 @@ export {
   HighVoltageIcon,
   Icon,
   MoreInformationIcon,
+  StopwatchIcon,
 };

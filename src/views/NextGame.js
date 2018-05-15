@@ -5,14 +5,20 @@ import { connect } from 'react-redux';
 
 import { proxy } from '../resources/utils';
 import { loadGames } from '../resources/games';
+import { StopwatchIcon } from '../icons';
+import Task from '../ui/Task';
 
 
-const NextGame = ({ start, competitor_a, competitor_b }) => (
+const NextGame = ({ id, start, competitor_a, competitor_b }) => {
+  const message = <div>Are you ready for <strong>{competitor_a.name}</strong> vs. <strong>{competitor_b.name}</strong> starting {moment(start).fromNow()}?</div>;
+  const to = `/games/${id}`;
+  return (
   <div className="tasks next-game">
     <h2>What is next?</h2>
-    <div className="task">Are you ready for {competitor_a.name} vs. {competitor_b.name} starting {moment(start).fromNow()}?</div>
+    <Task message={message} icon={<StopwatchIcon />} to={to} />
   </div>
-);
+  );
+}
 
 const mapStateToProps = (state) => {
   return {
