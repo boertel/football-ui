@@ -10,14 +10,14 @@ import Tasks from './Tasks';
 
 const Dashboard = ({ first_name, }) => (
   <div>
-    <h1>Hi!</h1>
-    <Link to="/games">Go to the games</Link>
+    <Link to="/games">Go to the matches</Link>
     <Tasks />
   </div>
 )
 
 const mapStateToProps = state => ({
-  refresh: !state.user[state.auth.id],
+  refresh: !state.user[state.auth.id] || Object.keys(state.games).length === 0,
+  games: state.games,
   first_name: get(state.user, [state.auth.id, 'full_name']),
 })
 

@@ -1,0 +1,13 @@
+session_name: football-ui
+windows:
+    - window_name: football-ui
+      options:
+          main-pane-height: 10
+      shell_command_before:
+          - vasy football-ui
+      panes:
+      - shell_command:
+          - yarn start
+      - shell_command:
+          - cd ./src/
+          - git st

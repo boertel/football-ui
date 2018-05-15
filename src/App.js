@@ -15,6 +15,7 @@ import {
   Leaderboard,
   AuthRedirect,
   Profile,
+  Friends,
 } from './views';
 
 import Footer from './ui/Footer';
@@ -38,6 +39,8 @@ class App extends Component {
                 <PrivateRoute path="/leaderboard" component={Leaderboard} />
                 <PrivateRoute path="/games" component={Games} />
                 <PrivateRoute path="/profile" component={Profile} />
+                <PrivateRoute path="/friends/:friendId" component={Friends} />
+                <PrivateRoute exact path="/friends" component={Friends} />
                 <Route path="/" exact component={AuthRedirect} />
                 <Footer />
               </div>

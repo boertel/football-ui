@@ -11,6 +11,7 @@ import GameCard from './GameCard';
 import GameMetadata from './GameMetadata';
 import GameScore from './GameScore';
 import Instructions from './Instructions';
+import Leaderboard from './Leaderboard';
 import Loading from './Loading';
 import Modal from './Modal';
 import Points from './Points';
@@ -35,6 +36,7 @@ export {
   GameMetadata,
   GameScore,
   Instructions,
+  Leaderboard,
   Loading,
   Modal,
   Points,

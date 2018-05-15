@@ -7,6 +7,7 @@ import group from './group';
 import points from './points';
 import user from './user';
 import bet from './bet';
+import friend from './friend';
 
 
 export default combineReducers({
@@ -17,4 +18,5 @@ export default combineReducers({
   points,
   bet,
   user,
+  friend,
 });

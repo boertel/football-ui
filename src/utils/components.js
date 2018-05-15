@@ -44,6 +44,7 @@ export const withAsync = (async, options) => {
       }
 
       componentDidMount() {
+        //console.log(WrappedComponent.name, this.props);
         this.load(this.props);
       }
 

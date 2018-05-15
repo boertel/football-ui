@@ -4,6 +4,9 @@
 .leaderboard h3 {
   margin-bottom: pad(4);
 }
+.leaderboard .list {
+  background-color: #fff;
+}
 .user {
   display: flex;
   justify-content: space-between;

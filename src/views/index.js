@@ -3,6 +3,7 @@ import AuthRedirect from './AuthRedirect';
 import Bets from './Bets';
 import CurrentGames from './CurrentGames';
 import Dashboard from './Dashboard';
+import Friends from './Friends';
 import Game from './Game';
 import GameTasks from './GameTasks';
 import GameView from './GameView';
@@ -23,6 +24,7 @@ export {
   Bets,
   CurrentGames,
   Dashboard,
+  Friends,
   Game,
   GameTasks,
   GameView,

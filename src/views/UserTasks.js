@@ -5,20 +5,26 @@ import Task from '../ui/Task';
 import {
   EmailIcon,
   CameraFlashIcon,
+  FriendsIcon,
 } from '../icons';
 
 const UserTasks = ({ verified, avatar, gravatar }) => {
   let tasks = [];
+  tasks.push({
+    'icon': <FriendsIcon />,
+    'message': 'Join a group of friends, so you can better keep track of how you are beating them.',
+    'to': '/friends',
+  });
   if (!verified) {
     tasks.push({
       'icon': <EmailIcon />,
-      'message': 'verify your email address so you can get reminders and notifications.',
+      'message': 'Verify your email address so you can get reminders and notifications.',
     });
   }
   if (!avatar) {
     tasks.push({
       'icon': <CameraFlashIcon />,
-      'message': <div><img src={`https://www.gravatar.com/avatar/${gravatar}`} />Looks like your friends can't see your beautiful face.</div>
+      'message': 'Looks like your friends can\'t see your beautiful face.',
     });
   }
   return <div className="tasks-group">{tasks.map((task, index) => <Task {...task} key={index} />)}</div>;

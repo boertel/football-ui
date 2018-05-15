@@ -4,6 +4,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 
 import { proxy } from '../resources/utils';
+import { loadGames } from '../resources/games';
 
 
 const NextGame = ({ start, competitor_a, competitor_b }) => (
@@ -19,4 +20,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(NextGame);
+export default connect(mapStateToProps, { load: loadGames })(NextGame);
