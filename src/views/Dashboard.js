@@ -5,12 +5,15 @@ import { get, values } from 'lodash';
 import { asyncConnect } from '../utils/components';
 import { loadUser } from '../resources/user';
 import { loadGames } from '../resources/games';
+import { ArrowRightIcon } from '../icons';
 import Tasks from './Tasks';
 
 
 const Dashboard = ({ first_name, }) => (
   <div>
-    <Link to="/games">Go to the matches</Link>
+    <div style={{textAlign: 'center'}}>
+      <Link to="/games">Go to the matches</Link>
+    </div>
     <Tasks />
   </div>
 )
