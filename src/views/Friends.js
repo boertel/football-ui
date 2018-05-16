@@ -22,7 +22,6 @@ class Friends extends Component {
 
   onChange = (evt) => {
     const { selectedIndex } = evt.target;
-    console.log(selectedIndex, this.getFriends());
     let to = '/friends';
     if (selectedIndex > 0) {
       const friend = this.getFriends()[selectedIndex - 1];
