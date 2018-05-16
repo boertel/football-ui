@@ -819,6 +819,8 @@ header .header-profile {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
+  color: #333;
+  text-decoration: none;
 }
 .user:hover {
   cursor: pointer;
@@ -853,4 +855,8 @@ header .header-profile {
 }
 .friends .friend-list {
   margin: 16px 0;
+}
+.profile h2 {
+  display: flex;
+  justify-content: space-between;
 }

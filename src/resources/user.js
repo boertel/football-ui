@@ -1,5 +1,5 @@
 import api from '../api';
-import { mapValues, keyBy } from 'lodash';
+import { get, mapValues, keyBy } from 'lodash';
 import { LOAD as BET_LOAD } from './bet';
 import { LOGOUT, LOAD as AUTH_LOAD } from './auth';
 
@@ -7,9 +7,10 @@ export const LOAD = 'football/user/LOAD';
 export const LOAD_USERS = 'football/user/LOAD_USERS';
 
 
-export function loadUser() {
+export function loadUser(props) {
   return dispatch => {
-    return api.get('/users/me/').then(response => {
+    const userId = get(props, 'match.params.userId', 'me');
+    return api.get(`/users/${userId}/`).then(response => {
       if (response.data.ok !== false) {
         dispatch({
           type: LOAD,

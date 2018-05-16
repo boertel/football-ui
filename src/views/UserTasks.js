@@ -15,6 +15,7 @@ const UserTasks = ({ verified, avatar, gravatar }) => {
     'message': 'Join a group of friends, so you can better keep track of how you are beating them.',
     'to': '/friends',
   });
+  /*
   if (!verified) {
     tasks.push({
       'icon': <EmailIcon />,
@@ -27,6 +28,7 @@ const UserTasks = ({ verified, avatar, gravatar }) => {
       'message': 'Looks like your friends can\'t see your beautiful face.',
     });
   }
+  */
   return <div className="tasks-group">{tasks.map((task, index) => <Task {...task} key={index} />)}</div>;
 }
 

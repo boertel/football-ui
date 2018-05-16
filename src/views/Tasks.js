@@ -8,12 +8,11 @@ import CurrentGames from './CurrentGames';
 
 const Tasks = () => (
   <div className="tasks">
+    <UserTasks />
     <CurrentGames />
     <NextGame />
     <h2>Here are a few actions you can do today!</h2>
     <GameTasks />
-    <h2>...and you can also update your profile!</h2>
-    <UserTasks />
   </div>
 );
 

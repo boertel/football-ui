@@ -12,6 +12,8 @@
   justify-content: space-between;
   align-items: center;
   padding: pad(4);
+  color: $default;
+  text-decoration: none;
 }
 .user:hover {
   cursor: pointer;

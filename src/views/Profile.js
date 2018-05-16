@@ -8,7 +8,7 @@ import { withClassNames } from '../ui/utils';
 const Profile = ({ full_name, points, className }) => {
   return (
     <div className={className}>
-      <h2>{full_name} {points} points</h2>
+      <h2><div>{full_name}</div><div>{points} points</div></h2>
     </div>
   );
 }
