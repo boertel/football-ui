@@ -42,7 +42,7 @@ const SignupForm = ({ values, handleSubmit, isSubmitting }) => (
 )
 
 
-const mapPropsToValues = props => ({ full_name: '', username: '', password: '12345', confirm_password: '12345'});
+const mapPropsToValues = props => ({ full_name: '', username: '', password: '', confirm_password: ''});
 const validate = (values, props) => {
   const errors = {};
   if (values.password.length < 6) {
