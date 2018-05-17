@@ -44,7 +44,7 @@ export const create = (name) => {
 
 export const join = (friendId) => {
   return dispatch => {
-    return api.get(`/friends/${friendId}/join/`).then(response => {
+    return api.post(`/friends/${friendId}/join/`).then(response => {
       const payload = handleResponse(response);
       dispatch({
         type: JOIN,
@@ -56,7 +56,7 @@ export const join = (friendId) => {
 
 export const leave = (friendId) => {
   return dispatch => {
-    return api.get(`/friends/${friendId}/leave/`).then(response => {
+    return api.post(`/friends/${friendId}/leave/`).then(response => {
       const payload = handleResponse(response);
       dispatch({
         type: LEAVE,
