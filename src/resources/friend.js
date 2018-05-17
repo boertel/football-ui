@@ -9,18 +9,31 @@ export const JOIN = 'football/friend/JOIN';
 export const LEAVE = 'football/friend/LEAVE';
 
 
-const handleResponse = response => {
-  const payload = response.data.map(friend => ({
-    ...friend,
-    members: keyBy(friend.members, 'id'),
-  }));
+const handleResponse = data => {
+  console.log(data);
+  const payload = data.map(friend => {
+    const members = friend.members.map(member => {
+      if (typeof member === 'number') {
+         return { id: member, _type: 'user', };
+      } else {
+        return {
+          ...member,
+          _type: 'user',
+        }
+      }
+    });
+    return {
+      ...friend,
+      members: keyBy(members, 'id'),
+    };
+  });
   return keyBy(payload, 'id');
 }
 
 export const loadFriends = () => {
   return dispatch => {
     return api.get('/friends/').then(response => {
-      const payload = handleResponse(response);
+      const payload = handleResponse(response.data);
       dispatch({
         type: LOAD,
         payload,
@@ -45,10 +58,11 @@ export const create = (name) => {
 export const join = (friendId) => {
   return dispatch => {
     return api.post(`/friends/${friendId}/join/`).then(response => {
-      const payload = handleResponse(response);
+      const payload = handleResponse([response.data]);
       dispatch({
         type: JOIN,
         friendId,
+        payload,
       });
     });
   }
@@ -57,10 +71,11 @@ export const join = (friendId) => {
 export const leave = (friendId) => {
   return dispatch => {
     return api.post(`/friends/${friendId}/leave/`).then(response => {
-      const payload = handleResponse(response);
+      const payload = handleResponse([response.data]);
       dispatch({
         type: LEAVE,
         friendId,
+        payload,
       });
     });
   }
@@ -80,6 +95,8 @@ const proxify = createProxify({
 export default (state=initialState, action) => {
   switch(action.type) {
     case LOAD:
+    case LEAVE:
+    case JOIN:
       return {
         ...state,
         ...mapValues(action.payload, proxify),

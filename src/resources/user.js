@@ -1,6 +1,7 @@
 import api from '../api';
-import { get, mapValues, keyBy } from 'lodash';
+import { forEach, get, mapValues, keyBy } from 'lodash';
 import { LOAD as BET_LOAD } from './bet';
+import { LOAD as FRIEND_LOAD } from './friend';
 import { LOGOUT, LOAD as AUTH_LOAD } from './auth';
 
 export const LOAD = 'football/user/LOAD';
@@ -36,6 +37,7 @@ export function loadUsers() {
 const initialState = {}
 
 export default function (state=initialState, action) {
+  let users = {};
   switch(action.type) {
     case LOAD:
     case AUTH_LOAD:
@@ -56,9 +58,23 @@ export default function (state=initialState, action) {
         }))
       }
 
+    case FRIEND_LOAD:
+      forEach(action.payload, (value, key) => {
+        const members = value.members;
+        mapValues(members, user => {
+          users[user.id] = {
+            ...state[user.id],
+            ...user,
+          };
+        });
+      });
+      return {
+        ...state,
+        ...users,
+      };
+
 
     case BET_LOAD:
-      let users = {};
       mapValues(action.payload, (bet) => {
         if (typeof bet.user === 'object' && bet.user !== null) {
           let user = bet.user;

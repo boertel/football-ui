@@ -1,15 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { sortBy } from 'lodash';
 import { withClassNames } from '../ui/utils';
 
 
-const User = withClassNames('user')(({ id, className, rank, full_name, points, me }) => (
+const User = connect((state, ownProps) => ({...state.user[ownProps.id]}))(withClassNames('user')(({ id, className, rank, full_name, points, me }) => (
   <Link to={`/profile/${id}`} className={`${className}${me ? ' me' : ''}`}>
     <div className="full-name">{rank}. {full_name}</div>
     <div className="points">{points} points</div>
   </Link>
-))
+)))
 
 
 const Leaderboard = ({ users, currentUserId, className, children, }) => {
@@ -27,7 +28,7 @@ const Leaderboard = ({ users, currentUserId, className, children, }) => {
           }
           previousPoints = points;
           const me = currentUserId === id;
-          return <User key={id} full_name={full_name} points={points} rank={rank} me={me} id={id} />
+          return <User key={id} me={me} id={id} rank={rank} />
         })}
       </div>
     </div>

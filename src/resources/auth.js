@@ -22,6 +22,7 @@ const authenticated = (response) => ([
     type: AUTHENTICATED,
     payload: {
       authenticated: true,
+      id: response.data.id,
     },
   },
   {
