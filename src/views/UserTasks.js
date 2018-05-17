@@ -13,7 +13,7 @@ const UserTasks = ({ verified, avatar, gravatar }) => {
   tasks.push({
     'icon': <FriendsIcon />,
     'message': 'Join a group of friends, so you can better keep track of how you are beating them.',
-    'to': '/friends',
+    'to': '/leaderboard',
   });
   /*
   if (!verified) {

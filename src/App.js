@@ -36,12 +36,11 @@ class App extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/logout" component={Logout} />
                 <PrivateRoute path="/dashboard" component={Dashboard} />
-                <PrivateRoute path="/leaderboard" component={Leaderboard} />
                 <PrivateRoute path="/games" component={Games} />
                 <PrivateRoute path="/profile/:userId" component={Profile} />
                 <PrivateRoute exact path="/profile" component={Profile} />
-                <PrivateRoute path="/friends/:friendId" component={Friends} />
-                <PrivateRoute exact path="/friends" component={Friends} />
+                <PrivateRoute path="/leaderboard/:friendId" component={Friends} />
+                <PrivateRoute exact path="/leaderboard" component={Friends} />
                 <Route path="/" exact component={AuthRedirect} />
                 <Footer />
               </div>

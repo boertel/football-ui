@@ -10,7 +10,6 @@ export const LEAVE = 'football/friend/LEAVE';
 
 
 const handleResponse = data => {
-  console.log(data);
   const payload = data.map(friend => {
     const members = friend.members.map(member => {
       if (typeof member === 'number') {

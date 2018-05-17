@@ -22,7 +22,7 @@ class Friends extends Component {
 
   onChange = (evt) => {
     const { selectedIndex } = evt.target;
-    let to = '/friends';
+    let to = '/leaderboard';
     if (selectedIndex > 0) {
       const friend = this.getFriends()[selectedIndex - 1];
       to += `/${friend.id}`;
@@ -35,7 +35,7 @@ class Friends extends Component {
   join = () => this.props.join(this.props.match.params.friendId);
   leave = () => this.props.leave(this.props.match.params.friendId);
   create = () => this.props.create(this.state.name).then(response => {
-    this.props.history.push(`/friends/${response.data.id}`);
+    this.props.history.push(`/leaderboard/${response.data.id}`);
   });
 
 
@@ -46,6 +46,7 @@ class Friends extends Component {
       match,
       currentUserId,
       friends,
+      users,
     } = this.props;
 
     const { friendId } = match.params;
@@ -75,9 +76,10 @@ class Friends extends Component {
           </div>
         </div>
         {friendId && <FriendList id={friendId} currentUserId={currentUserId} />}
+        {!friendId && (<div className="friend-list"><Leaderboard users={users} currentUserId={currentUserId} /></div>)}
       </div>
     )
   }
 }
 
-export default asyncConnect(state => ({ friends: state.friend, currentUserId: state.auth.id, refresh: Object.keys(state.friend).length === 0 }), { load: loadFriends, join, leave, create, })(Friends);
+export default asyncConnect(state => ({ friends: state.friend, currentUserId: state.auth.id, refresh: Object.keys(state.friend).length === 0, users: state.user, }), { load: loadFriends, join, leave, create, })(Friends);
