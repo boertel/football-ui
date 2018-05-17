@@ -12,7 +12,6 @@ import {
   Login,
   Logout,
   Signup,
-  Leaderboard,
   AuthRedirect,
   Profile,
   Friends,

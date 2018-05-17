@@ -5,6 +5,7 @@ import { values, sortBy } from 'lodash';
 import { asyncConnect } from '../utils/components';
 import { loadFriends, join, leave, create, } from '../resources/friend';
 import { Button, Leaderboard, TextInput } from '../ui';
+import LeaderboardAll from '../views/LeaderboardAll';
 
 
 const FriendList = connect((state, ownProps) => ({ friend: state.friend[ownProps.id], }))(({ friend, currentUserId }) => {
@@ -76,10 +77,10 @@ class Friends extends Component {
           </div>
         </div>
         {friendId && <FriendList id={friendId} currentUserId={currentUserId} />}
-        {!friendId && (<div className="friend-list"><Leaderboard users={users} currentUserId={currentUserId} /></div>)}
+        {!friendId && (<div className="friend-list"><LeaderboardAll /></div>)}
       </div>
     )
   }
 }
 
-export default asyncConnect(state => ({ friends: state.friend, currentUserId: state.auth.id, refresh: Object.keys(state.friend).length === 0, users: state.user, }), { load: loadFriends, join, leave, create, })(Friends);
+export default asyncConnect(state => ({ friends: state.friend, currentUserId: state.auth.id, refresh: Object.keys(state.friend).length === 0, }), { load: loadFriends, join, leave, create, })(Friends);

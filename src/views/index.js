@@ -9,7 +9,6 @@ import GameTasks from './GameTasks';
 import GameView from './GameView';
 import Games from './Games';
 import Header from './Header';
-import Leaderboard from './Leaderboard';
 import Login from './Login';
 import Logout from './Logout';
 import NextGame from './NextGame';
@@ -30,7 +29,6 @@ export {
   GameView,
   Games,
   Header,
-  Leaderboard,
   Login,
   Logout,
   NextGame,
