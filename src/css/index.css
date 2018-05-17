@@ -625,7 +625,7 @@ a.button {
 @media (max-width: 640px) {
   .game-card .time,
   .game-card .predictions {
-    grid-column-end: span 1;
+    grid-column-end: span 2;
   }
 }
 .game-card .badge {
@@ -635,7 +635,7 @@ a.button {
 }
 @media (max-width: 640px) {
   .game-card .badge {
-    grid-column-end: span 2;
+    grid-column-end: span 1;
   }
 }
 .game-card .badge.points,
@@ -711,10 +711,11 @@ a.button {
 }
 .score-input .async-status {
   position: absolute;
-  bottom: 100%;
+  top: 100%;
   width: 100%;
   text-align: center;
   transition: opacity 0.4s ease-out 3s;
+  color: #008000;
 }
 .score-input .async-status.saved {
   opacity: 0;

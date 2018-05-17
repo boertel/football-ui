@@ -5,6 +5,7 @@ import { LOAD as BET_LOAD } from './bet';
 
 
 export const LOAD = 'football/games/LOAD';
+export const UPDATE = 'football/games/UPDATE';
 
 export const loadGames = () => {
   return dispatch => {
@@ -13,6 +14,17 @@ export const loadGames = () => {
         type: LOAD,
         payload: keyBy(response.data, 'id'),
       });
+    });
+  }
+}
+
+export const updateGame = (gameId, data) => {
+  return dispatch => {
+    return api.patch(`/games/${gameId}/`, data).then(response => {
+      dispatch({
+        type: UPDATE,
+        payload: response.data,
+      })
     });
   }
 }

@@ -3,6 +3,7 @@ import { values } from 'lodash';
 import { connect } from 'react-redux';
 
 import { createOrUpdateBet } from '../resources/bet';
+import { updateGame } from '../resources/games';
 
 
 class ScoreInput extends Component {
@@ -37,6 +38,8 @@ class ScoreInput extends Component {
     const {
       name,
       gameId,
+      is_superuser,
+      locked,
     } = this.props;
     const {
       value,
@@ -45,7 +48,11 @@ class ScoreInput extends Component {
     if (!isNaN(parseInt(value, 10))) {
       if (this.props.value !== value) {
         this.saving();
-        this.props.createOrUpdateBet(gameId, {[name]: value}).then(this.done);
+        if (is_superuser && locked) {
+          this.props.updateGame(gameId, {[name]: value}).then(this.done);
+        } else {
+          this.props.createOrUpdateBet(gameId, {[name]: value}).then(this.done);
+        }
       }
     }
   }
@@ -68,6 +75,9 @@ class ScoreInput extends Component {
       betId,
       gameId,
       createOrUpdateBet,
+      updateGame,
+      locked,
+      is_superuser,
       ...rest,
     } = this.props;
 
@@ -76,16 +86,17 @@ class ScoreInput extends Component {
       saved,
     } = this.state;
 
-    const disabled = saving;
+    const disabled = !is_superuser ? saving || rest.disabled : false;
 
     return (
       <div className="score-input">
         <input
           type="text"
-          disabled={disabled}
           onChange={this.onChange}
           onClick={this.onClick}
           {...rest}
+          placeholder={locked ? '?' : null}
+          disabled={disabled}
           onBlur={this.onBlur}
           value={this.state.value}
           autoComplete="off"
@@ -106,16 +117,19 @@ const mapStateToProps = (state, ownProps) => {
   const bet = values(state.bet).find(bet => bet.user.id === userId && bet.game.id === gameId) || {};
   let value = bet[ownProps.name];
 
+  const is_superuser = state.user[state.auth.id].is_superuser;
   const game = state.games[gameId];
   if (game.locked) {
-    value = '?';
+    value = '';
   }
   if (game[ownProps.name] !== null) {
     value = game[ownProps.name];
   }
   return {
     value,
+    locked: game.locked,
+    is_superuser,
   }
 }
 
-export default connect(mapStateToProps, { createOrUpdateBet, })(ScoreInput);
+export default connect(mapStateToProps, { createOrUpdateBet, updateGame, })(ScoreInput);
