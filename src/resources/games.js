@@ -29,6 +29,14 @@ export const updateGame = (gameId, data) => {
   }
 }
 
+export const computePoints = (gameId) => {
+  return () => {
+    return api.post(`/games/${gameId}/compute/`).then(response => {
+      return response;
+    });
+  }
+}
+
 const initialState = {};
 
 

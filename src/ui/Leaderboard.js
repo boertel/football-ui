@@ -14,9 +14,9 @@ const User = connect((state, ownProps) => ({...state.user[ownProps.id]}))(withCl
 
 
 const Leaderboard = ({ users, currentUserId, className, children, }) => {
-  const leaderboard = sortBy(users, 'points');
-  let rank = 1;
-  let previousPoints = 0;
+  const leaderboard = sortBy(users, '-points');
+  let rank = 0;
+  let previousPoints = -1;
   const title = children ? <h3>Leaderboard {children}</h3> : <h3>Leaderboard</h3>
   return (
     <div className={className}>
