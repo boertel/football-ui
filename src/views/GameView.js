@@ -19,6 +19,7 @@ class GameView extends Component {
     this.setState({ submitting: true });
     this.props.computePoints(this.props.id).then(() => this.setState({ submitting: true }));
   }
+
   render() {
     const { id, next, is_superuser, } = this.props;
     const { submitting } = this.state;
@@ -27,8 +28,8 @@ class GameView extends Component {
         <GameItem id={id} isView={true} />
         <Bets gameId={id} />
         <div className="modal-actions">
-          {is_superuser ? <Button className="button danger" submitting={submitting} onClick={this.computePoints}>Update points</Button> : null}
           <Link className="button secondary" to={`/games/${next}`}>Next</Link>
+          {is_superuser ? <Button className="button danger" submitting={submitting} onClick={this.computePoints}>Update points</Button> : null}
         </div>
       </div>
     )
