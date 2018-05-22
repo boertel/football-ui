@@ -725,6 +725,10 @@ a.button {
   border-top: 1px solid #808080;
   padding-top: 8px;
 }
+.bets h3 {
+  display: flex;
+  justify-content: space-between;
+}
 .bet-sections {
   margin-top: 16px;
   display: grid;

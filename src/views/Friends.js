@@ -7,6 +7,8 @@ import { loadFriends, join, leave, create, } from '../resources/friend';
 import { Button, Leaderboard, TextInput } from '../ui';
 import LeaderboardAll from '../views/LeaderboardAll';
 
+import SelectFriends from './SelectFriends';
+
 
 const FriendList = connect((state, ownProps) => ({ friend: state.friend[ownProps.id], }))(({ friend, currentUserId }) => {
   return (
@@ -21,24 +23,19 @@ class Friends extends Component {
     name: '',
   }
 
-  onChange = (evt) => {
-    const { selectedIndex } = evt.target;
+  onChange = (value) => {
     let to = '/leaderboard';
-    if (selectedIndex > 0) {
-      const friend = this.getFriends()[selectedIndex - 1];
-      to += `/${friend.id}`;
+    if (value !== 'all') {
+      to += `/${value}`;
     }
     this.props.history.push(to);
   }
-
-  getFriends = () => sortBy(values(this.props.friends), 'name');
 
   join = () => this.props.join(this.props.match.params.friendId);
   leave = () => this.props.leave(this.props.match.params.friendId);
   create = () => this.props.create(this.state.name).then(response => {
     this.props.history.push(`/leaderboard/${response.data.id}`);
   });
-
 
   onChangeName = (evt) => this.setState({ name: evt.target.value });
 
@@ -54,11 +51,6 @@ class Friends extends Component {
 
     const friend = friends[friendId];
 
-    const options = [<option key="empty">Create a group</option>].concat(this.getFriends().map(({ id, name, members, }) => {
-      const count = Object.keys(members).length;
-      return <option value={id} key={id}>{name} ({count} {count === 1 ? 'member' : 'members'})</option>;
-    }));
-
     let button = <Button onClick={this.create} className="secondary">Create a group</Button>
     if (friendId) {
       const already = Object.keys(friend.members).indexOf(`${currentUserId}`) !== -1;
@@ -71,7 +63,7 @@ class Friends extends Component {
     return (
       <div className="friends">
         <div className="actions">
-          <label>Select a group of friends: <select onChange={this.onChange} value={friendId}>{options}</select></label>
+          <label>Select a group of friends: <SelectFriends onChange={this.onChange} value={friendId} /></label>
           <div>
             {!friend ? <TextInput onChange={this.onChangeName} value={this.state.name} placeholder="Group's name" /> : null}{button}
           </div>

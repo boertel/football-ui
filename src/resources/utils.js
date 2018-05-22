@@ -55,6 +55,9 @@ export class ProxyComponent extends Component {
         equality = this.props[key] === nextProps[key];
       }
     }
+    if (!isEqual(this.state, nextState)) {
+      equality = false;
+    }
     return !equality;
   }
 }

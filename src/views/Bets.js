@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import values from 'lodash/values';
+import qs from 'qs';
+import { get } from 'lodash';
 
 import { asyncConnect } from '../utils/components';
 import { withClassNames } from '../ui/utils';
 import { loadBets } from '../resources/bet';
 import { ProxyComponent, proxy } from '../resources/utils';
+import SelectFriends from '../views/SelectFriends';
 
 
 const competitorAwins = ({ score_a, score_b }) => score_a > score_b;
@@ -30,24 +34,42 @@ const BetSection = ({ title, bets, filter }) => (
 )
 
 class Bets extends ProxyComponent {
+  onChange = (value) => {
+    this.props.history.replace({
+      pathname: this.props.location.pathname,
+      search: `?friends=${value}`,
+    });
+  }
+
   render() {
-    const { gameId, locked, competitor_a, competitor_b, bets } = this.props;
+    const {
+      gameId,
+      friendId,
+      locked,
+      competitor_a,
+      competitor_b,
+      bets,
+    } = this.props;
+
     let content = null;
     if (!locked) {
-      content = <em>All predictions will be available to see 15 minutes before kick-off time.</em>;
+      content = [
+        <h3 key="title">Predictions</h3>,
+        <em key="instructions">All predictions will be available to see 15 minutes before kick-off time.</em>,
+      ];
     } else {
-      content = (
-        <div className="bet-sections">
+      content = [
+        <h3 key="title"><div>Predictions</div><SelectFriends onChange={this.onChange} value={friendId} /></h3>,
+        <div className="bet-sections" key="section">
           <BetSection title={`${competitor_a.name} wins`} bets={bets} filter={competitorAwins} />
           <BetSection title="It's a tie!" bets={bets} filter={itIsATie} />
           <BetSection title={`${competitor_b.name} wins`} bets={bets} filter={competitorBwins} />
         </div>
-      );
+      ];
     }
 
     return (
       <div className="bets">
-        <h3>Predictions</h3>
         {content}
       </div>
     );
@@ -57,11 +79,16 @@ class Bets extends ProxyComponent {
 const mapStateToProps = (state, ownProps) => {
   const gameId = ownProps.gameId;
 
-  const bets = values(state.bet).filter(bet => bet.game.id === gameId);
+  const friendId = qs.parse(ownProps.location.search.replace('?', '')).friends;
+
+  const members = Object.keys(get(state, ['friend', friendId, 'members'], {}));
+
+  const bets = values(state.bet).filter(bet => bet.game.id === gameId && (members ? members.indexOf(`${bet.user.id}`) !== -1 : true));
   const game = proxy(state.games[gameId], state);
 
   return {
     gameId,
+    friendId,
     ...game,
     bets,
     refresh: game.locked && game.bets !== true,
@@ -70,4 +97,4 @@ const mapStateToProps = (state, ownProps) => {
 
 
 // TODO conditional load? is game already in redux?
-export default asyncConnect(mapStateToProps, { load: [(props) => loadBets({ game: props.gameId })]})(Bets);
+export default withRouter(asyncConnect(mapStateToProps, { load: [(props) => loadBets({ game: props.gameId }), ]})(Bets));
