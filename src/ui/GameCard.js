@@ -34,7 +34,7 @@ class GameCard extends ProxyComponent {
     return (
       <div className={className}>
         <GameMetadata group={group} start={start} gameId={id} />
-        <GameScore className="competitor-a" name="score_a" competitor_name={competitor_a.name} id={id} locked={locked} autoFocus={isView ? true : false} />
+        <GameScore className="competitor-a" name="score_a" competitor_name={competitor_a.name} id={id} locked={locked} autoFocus={isView ? !locked : false} />
         <GameScore className="competitor-b" name="score_b" competitor_name={competitor_b.name} id={id} locked={locked} />
         {predictions}
       </div>

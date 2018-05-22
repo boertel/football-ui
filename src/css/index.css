@@ -375,8 +375,8 @@ li {
   color: #000;
 }
 .button.danger {
-  background-color: #f00;
-  border: 1px solid #f00;
+  background-color: #cf312f;
+  border: 1px solid #cf312f;
   color: #fff;
   transition-property: background-color, color, border-color;
   transition-duration: 0.2s;
@@ -395,39 +395,39 @@ li {
 }
 .button.danger:hover,
 .button.danger:focus {
-  background-color: #600;
-  border-color: #600;
+  background-color: #521313;
+  border-color: #521313;
   color: #fff;
 }
 .button.danger.outline {
-  border-color: #f00;
-  color: #f00;
+  border-color: #cf312f;
+  color: #cf312f;
   background-color: transparent;
 }
 .button.danger.outline .loader div {
-  background-color: #f00 !important;
+  background-color: #cf312f !important;
 }
 .button.danger.outline:hover .loader div {
   background-color: #fff !important;
 }
 .button.danger.outline:hover {
-  background-color: #f00;
+  background-color: #cf312f;
   color: #fff;
 }
 .button.danger.link {
-  color: #f00;
+  color: #cf312f;
   background-color: transparent;
   border: none;
 }
 .button.danger.link .loader div {
-  background-color: #f00 !important;
+  background-color: #cf312f !important;
 }
 .button.danger.link:hover .loader div {
   background-color: #fff !important;
 }
 .button.danger.link:hover {
   background-color: transparent;
-  color: #600;
+  color: #521313;
 }
 a.button {
   text-decoration: none;
@@ -445,8 +445,8 @@ a.button {
   outline: none;
 }
 .text-input.danger {
-  border-color: #f00;
-  color: #f00;
+  border-color: #cf312f;
+  color: #cf312f;
 }
 .text-input.danger:hover,
 .text-input.danger:focus {
@@ -465,7 +465,7 @@ a.button {
   flex-direction: column;
 }
 .form-field-error {
-  color: #f00;
+  color: #cf312f;
   font-weight: 700;
 }
 .form-actions {
@@ -531,19 +531,19 @@ a.button {
   margin-right: 16px;
 }
 .badge.live {
-  background-color: #f00;
+  background-color: #cf312f;
   color: #fff;
 }
 .badge.loss {
   color: #fff;
-  background-color: #f00;
+  background-color: #cf312f;
 }
 .badge.win {
   color: #fff;
-  background-color: #008000;
+  background-color: #5e9d39;
 }
 .badge.perfect {
-  background-color: #ff0;
+  background-color: #fbe846;
 }
 .badge.groupa {
   background-color: #add8e6;
@@ -574,7 +574,7 @@ a.button {
   justify-content: center;
 }
 .error {
-  color: #f00;
+  color: #cf312f;
   font-weight: 700;
   margin: 16px 0;
 }
@@ -603,16 +603,16 @@ a.button {
   padding: 16px;
 }
 .game-card.win {
-  border-color: #008000;
-  background-color: rgba(0,128,0,0.2);
+  border-color: #5e9d39;
+  background-color: rgba(94,157,57,0.2);
 }
 .game-card.perfect {
-  border-color: #ff0;
-  background-color: rgba(255,255,0,0.2);
+  border-color: #fbe846;
+  background-color: rgba(251,232,70,0.2);
 }
 .game-card.loss {
-  border-color: #f00;
-  background-color: rgba(255,0,0,0.2);
+  border-color: #cf312f;
+  background-color: rgba(207,49,47,0.2);
 }
 .game-card > div {
   margin: 8px;
@@ -715,7 +715,7 @@ a.button {
   width: 100%;
   text-align: center;
   transition: opacity 0.4s ease-out 3s;
-  color: #008000;
+  color: #5e9d39;
 }
 .score-input .async-status.saved {
   opacity: 0;
