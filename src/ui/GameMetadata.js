@@ -6,7 +6,7 @@ import StatusBadge from './StatusBadge';
 const GameMetadata = ({ group, start, gameId }) => {
   let children = [
       <Badge className={`${group.name.replace(' ', '').toLowerCase()} game-header`} key="group">{group.name}</Badge>,
-      <Time className="game-header" key="time" time={start} format="HH:mm a" />,
+      <Time className="game-header" key="time" time={start} format="LT" />,
       <StatusBadge className="game-header" key="status" gameId={gameId} />,
   ];
 
