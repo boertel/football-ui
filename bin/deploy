@@ -21,4 +21,6 @@ cp $CSS $BUILD_PATH/main.css
 
 aws s3 cp $GITROOT/build/tmp/ s3://$BUCKET --recursive
 
-heroku config:set BUNDLE_VERSION=$HASH --app $HEROKU_APP
+if [[ $? == 0 ]]; then
+    heroku config:set BUNDLE_VERSION=$HASH --app $HEROKU_APP
+fi
