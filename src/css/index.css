@@ -495,8 +495,12 @@ a.button {
   background: #fff;
   border-radius: 2px;
   z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
 }
-@media (max-width: 640px) {
+@media (max-width: 800px) {
   .modal {
     margin: 0;
     height: 100%;

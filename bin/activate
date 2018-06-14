@@ -1,0 +1,3 @@
+#!/bin/bash
+
+#heroku config:set BUNDLE_VERSION=$HASH --app $HEROKU_APP

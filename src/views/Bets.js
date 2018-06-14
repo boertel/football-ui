@@ -16,6 +16,18 @@ const competitorAwins = ({ score_a, score_b }) => score_a > score_b;
 const competitorBwins = ({ score_a, score_b }) => score_a < score_b;
 const itIsATie = ({ score_a, score_b }) => score_a === score_b;
 
+const sortScoreA = (a, b) => {
+  return (a.score_a * 2 + a.score_b) - (b.score_a * 2 + b.score_b);
+}
+
+const sortScoreB = (a, b) => {
+  return (a.score_a + a.score_b * 2) - (b.score_a + b.score_b * 2);
+}
+
+const sortScoreTie = (a, b) => {
+  return (a.score_a + a.score_b) - (b.score_a + b.score_b);
+}
+
 
 const BetItem = connect((state, ownProps) => ({user: state.user[ownProps.user.id], currentUserId: state.auth.id,}))(withClassNames('bet-item', props => props.currentUserId === props.user.id && ' me')(({ user, currentUserId, score_a, score_b, className }) => (
   <div className={className}>
@@ -24,11 +36,11 @@ const BetItem = connect((state, ownProps) => ({user: state.user[ownProps.user.id
   </div>
 )))
 
-const BetSection = ({ title, bets, filter }) => (
+const BetSection = ({ title, bets, filter, sort, }) => (
   <div className="bet-section">
     <h4>{title}</h4>
     <ul>
-      { bets.filter(filter).map(bet => <BetItem key={bet.id} {...bet} />) }
+      { bets.filter(filter).sort(sort).map(bet => <BetItem key={bet.id} {...bet} />) }
     </ul>
   </div>
 )
@@ -61,9 +73,24 @@ class Bets extends ProxyComponent {
       content = [
         <h3 key="title"><div>Predictions</div><SelectFriends onChange={this.onChange} value={friendId} /></h3>,
         <div className="bet-sections" key="section">
-          <BetSection title={`${competitor_a.name} wins`} bets={bets} filter={competitorAwins} />
-          <BetSection title="It's a tie!" bets={bets} filter={itIsATie} />
-          <BetSection title={`${competitor_b.name} wins`} bets={bets} filter={competitorBwins} />
+          <BetSection
+            title={`${competitor_a.name} wins`}
+            bets={bets}
+            filter={competitorAwins}
+            sort={sortScoreA}
+          />
+          <BetSection
+            title="It's a tie!"
+            bets={bets}
+            filter={itIsATie}
+            sort={sortScoreTie}
+          />
+          <BetSection
+            title={`${competitor_b.name} wins`}
+            bets={bets}
+            filter={competitorBwins}
+            sort={sortScoreB}
+          />
         </div>
       ];
     }
