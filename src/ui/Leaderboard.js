@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { sortBy } from 'lodash';
+import { sortBy, values } from 'lodash';
 import { withClassNames } from '../ui/utils';
 
 
@@ -14,7 +14,7 @@ const User = connect((state, ownProps) => ({...state.user[ownProps.id]}))(withCl
 
 
 const Leaderboard = ({ users, currentUserId, className, children, }) => {
-  const leaderboard = sortBy(users, '-points');
+  const leaderboard = sortBy(values(users), '-points');
   let rank = 0;
   let previousPoints = -1;
   const title = children ? <h3>Leaderboard {children} ({leaderboard.length})</h3> : <h3>Leaderboard  ({leaderboard.length})</h3>

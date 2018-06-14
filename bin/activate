@@ -1,3 +1,5 @@
 #!/bin/bash
 
-#heroku config:set BUNDLE_VERSION=$HASH --app $HEROKU_APP
+HEROKU_APP="football-worldcup-2018"
+
+heroku config:set BUNDLE_VERSION=$1 --app $HEROKU_APP
