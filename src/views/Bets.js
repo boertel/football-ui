@@ -83,7 +83,7 @@ const mapStateToProps = (state, ownProps) => {
 
   const members = Object.keys(get(state, ['friend', friendId, 'members'], {}));
 
-  const bets = values(state.bet).filter(bet => bet.game.id === gameId && (members ? members.indexOf(`${bet.user.id}`) !== -1 : true));
+  const bets = values(state.bet).filter(bet => bet.game.id === gameId && (members.length > 0 ? members.indexOf(`${bet.user.id}`) !== -1 : true));
   const game = proxy(state.games[gameId], state);
 
   return {
