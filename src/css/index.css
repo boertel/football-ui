@@ -491,7 +491,7 @@ a.button {
   padding-top: 8px;
   min-width: 300px;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   background: #fff;
   border-radius: 2px;
   z-index: 1;
@@ -732,10 +732,8 @@ a.button {
 .bet-sections {
   margin-top: 16px;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-}
-.bet-section {
-  padding: 0 4px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 16px;
 }
 .bet-section h4 {
   margin-bottom: 12px;
