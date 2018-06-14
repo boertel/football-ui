@@ -99,6 +99,7 @@ class ScoreInput extends Component {
           disabled={disabled}
           onBlur={this.onBlur}
           value={this.state.value}
+          pattern="[0-9]*"
           autoComplete="off"
         />
         <div className={`async-status${saved ? ' saved' : ''}`}>
