@@ -59,7 +59,7 @@ class Games extends Component {
         <div className="instructions">
           <p>Before getting started, here is some advice and a few instructions:</p>
           <ul>
-            <li>you can set the score <strong>15 minutes before</strong> kick-off. After that time, you will be able to see everyone's predictions.</li>
+            <li>You can set the score <strong>15 minutes before</strong> kick-off. After that time, you will be able to see everyone's predictions.</li>
             <li>It is the score at <strong>90 minutes</strong> that counts, so there are opportunities for ties during the knockout phase.</li>
             <li>Don't miss out on any points! Fill up all the matches <strong>now</strong>. You can always update your score later on.</li>
             <li>Don't loose hope, matches during the knockout phase will be <strong>worth more points</strong>!</li>
