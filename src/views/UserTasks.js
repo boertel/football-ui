@@ -12,7 +12,7 @@ const UserTasks = ({ verified, avatar, gravatar }) => {
   let tasks = [];
   tasks.push({
     'icon': <FriendsIcon />,
-    'message': 'Join a group of friends, so you can better keep track of how you are beating them.',
+    'message': 'Join a group of friends! Keep track of how you\'re beating them.',
     'to': '/leaderboard',
   });
   /*

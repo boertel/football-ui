@@ -57,12 +57,13 @@ class Games extends Component {
     return (
       <div>
         <div className="instructions">
-          <p>Before getting started a few instructions and advices:</p>
+          <p>Before getting started, here is some advice and a few instructions:</p>
           <ul>
-            <li>you can set the scores <strong>15 minutes before</strong> kick-off. After that time, you will be able to see the predictions from everybody.</li>
+            <li>you can set the score <strong>15 minutes before</strong> kick-off. After that time, you will be able to see everyone's predictions.</li>
             <li>It is the score at <strong>90 minutes</strong> that counts, so there are opportunities for ties during the knockout phase.</li>
-            <li>Fill up all the matches <strong>now</strong>, just to be safe and not miss points because you forgot to fill it up before the deadline. You can always update your score later on.</li>
-            <li>Don't loose hope, matches during the knockout phase will be <strong>worth more points</strong>. There will be about the same amount of points distribute between group and knockout stages.</li>
+            <li>Don't miss out on any points! Fill up all the matches <strong>now</strong>. You can always update your score later on.</li>
+            <li>Don't loose hope, matches during the knockout phase will be <strong>worth more points</strong>!</li>
+            <li>Have fun and good luck 🏆 </li>
           </ul>
         </div>
         <div>{days}</div>
