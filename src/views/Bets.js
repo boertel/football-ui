@@ -30,7 +30,7 @@ const sortScoreTie = (a, b) => {
 
 
 const BetItem = connect((state, ownProps) => ({user: state.user[ownProps.user.id], currentUserId: state.auth.id,}))(withClassNames('bet-item', props => props.currentUserId === props.user.id && ' me')(({ user, currentUserId, score_a, score_b, className, game, }) => {
-  const betStatus = getStatus(game.score_a, game_score_b, { score_a, score_b });
+  const betStatus = getStatus(game.score_a, game.score_b, { score_a, score_b });
   return (
     <div className={`${className} ${betStatus}`}>
       <div>{user.full_name}</div>

@@ -759,6 +759,15 @@ a.button {
   width: 100%;
   padding: 4px 0;
 }
+.bet-item.win {
+  background-color: rgba(94,157,57,0.2);
+}
+.bet-item.loss {
+  background-color: rgba(251,232,70,0.2);
+}
+.bet-item.perfect {
+  background-color: rgba(207,49,47,0.2);
+}
 .bet-item.me {
   font-weight: 700;
 }
