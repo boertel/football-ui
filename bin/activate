@@ -2,4 +2,9 @@
 
 HEROKU_APP="football-worldcup-2018"
 
+if [[ -z "$1" ]]; then
+    echo "missing bundle hash"
+    exit 1
+fi
+
 heroku config:set BUNDLE_VERSION=$1 --app $HEROKU_APP
